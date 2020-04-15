@@ -21,6 +21,10 @@ Route::get('/epistolary-novels', function () {
     return view('epistolary-novels');
 })->name('epistolary-novels');
 
+Route::get('/credits', function () {
+    return view('credits');
+})->name('credits');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

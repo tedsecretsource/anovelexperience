@@ -13,6 +13,30 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
 
+h1 {
+    @apply pt-1 pb-4 text-4xl font-sans font-bold leading-tight font-bold tracking-wider antialiased;
+}
+
+h2 {
+    @apply pt-1 pb-4 text-2xl font-sans font-bold leading-tight tracking-wide antialiased;
+}
+
+h3 {
+    @apply pt-1 pb-4 text-xl font-sans font-bold leading-tight tracking-wide antialiased;
+}
+
+h4 {
+    @apply pt-1 pb-4 text-lg font-sans font-bold leading-tight tracking-wide antialiased;
+}
+
+p {
+    @apply py-2 leading-normal antialiased;
+}
+
+a {
+    @apply text-dracred-500 underline;
+}
+
 /**
  * This injects any component classes registered by plugins.
  *

@@ -20,8 +20,8 @@
 
         @if(Route::has('login'))
 
-        <nav x-data="{ open: false }" class="bg-dracgrey">
-        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <nav x-data="{ open: false }" class="bg-dracgrey font-sans">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex">
-                        <a href="{{ route('home') }}" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Home</a>
+                        <a href="{{ route('welcome') }}" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Home</a>
                         <a href="{{ route('epistolary-novels') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Epistolary Novels</a>
                         </div>
                 </div>
@@ -64,25 +64,21 @@
                     </div>
                 </div>
             @else
-            <a href="{{ route('login') }}" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase pr-6">{{ __('Login') }}</a>
+            <a href="{{ route('login') }}" class="no-underline hover:underline text-lg font-normal uppercase pr-6">{{ __('Login') }}</a>
             @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase">{{ __('Register') }}</a>
+                <a href="{{ route('register') }}" class="no-underline hover:underline text-lg font-normal uppercase">{{ __('Register') }}</a>
             @endif
             @endauth
             </div>
         </div>
         <div :class="{'block': open, 'hidden': !open}" class="hidden sm:hidden">
             <div class="px-2 pt-2 pb-3">
-                <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Home</a>
+                <a href="{{ route('welcome') }}" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Home</a>
                 <a href="{{ route('epistolary-novels') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Epistolary Novels</a>
             </div>
         </div>
         </nav>
         @endif
-
-
-        <nav class="max-w-screen-lg mx-auto flex flex-row pt-2 pb-2">
-        </nav>
 
     </div>
 
@@ -97,7 +93,7 @@
 
     <div h-screen>
         <div class="max-w-screen-lg mx-auto">
-
+            <a href="{{ route('credits') }}">Site Credits</a>
         </div>
     </div>
 </body>

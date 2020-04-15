@@ -1,4 +1,9 @@
-<section>
+<div class="px-4 py-2 mx-auto m-3 flex flex-col items-center bg-black text-gray-100 text-center rounded-md shadow-lg">
+<div class="w-12 m-4 {{ $icon_color }}">
+        @includeWhen( 'gift' === $icon, 'svgs.gift')
+        @includeWhen( 'paper-plane' === $icon, 'svgs.paper-plane')
+        @includeWhen( 'heartbeat' === $icon, 'svgs.heartbeat')
+    </div>
     <h2>{{ $h2 }}</h2>
-    <p>{{ $text }}</p>
-</section>
+    <p class="text-left">{{ $text }}</p>
+</div>

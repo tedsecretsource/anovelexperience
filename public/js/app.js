@@ -21043,8 +21043,8 @@ window.alpinejs = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/d
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/Sites/dracula/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/Sites/dracula/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/vagrant/Sites/anovelexperience/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/Sites/anovelexperience/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
