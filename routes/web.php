@@ -25,6 +25,14 @@ Route::get('/credits', function () {
     return view('credits');
 })->name('credits');
 
+Route::get('/privacy', function () {
+    return view('privacy');
+})->name('privacy');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

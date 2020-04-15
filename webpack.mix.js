@@ -17,7 +17,8 @@ require('laravel-mix-purgecss');
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css')
     .tailwind('./tailwind.config.js')
-    .copyDirectory('resources/images', 'public/images');
+    .copyDirectory('resources/images', 'public/images')
+    .copy('resources/css/animations.css', 'public/css');
 
 if (mix.inProduction()) {
     mix

@@ -37,6 +37,10 @@ a {
     @apply text-dracred-500 underline;
 }
 
+ul {
+    @apply px-6 list-disc list-outside;
+}
+
 /**
  * This injects any component classes registered by plugins.
  *
@@ -61,6 +65,7 @@ a {
  * @import "components/buttons";
  * @import "components/forms";
  */
+@import "./animations.css";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
@@ -86,3 +91,4 @@ a {
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+

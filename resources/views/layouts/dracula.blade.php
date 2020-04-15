@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/animations.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-serif">
 
@@ -64,9 +65,9 @@
                     </div>
                 </div>
             @else
-            <a href="{{ route('login') }}" class="no-underline hover:underline text-lg font-normal uppercase pr-6">{{ __('Login') }}</a>
+            <a href="{{ route('login') }}" class="no-underline hover:underline text-lg font-normal uppercase pr-6 text-gray-100">{{ __('Login') }}</a>
             @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="no-underline hover:underline text-lg font-normal uppercase">{{ __('Register') }}</a>
+                <a href="{{ route('register') }}" class="no-underline hover:underline text-lg font-normal uppercase text-gray-100">{{ __('Register') }}</a>
             @endif
             @endauth
             </div>
@@ -91,10 +92,13 @@
         </main>
     </div>
 
-    <div h-screen>
-        <div class="max-w-screen-lg mx-auto">
-            <a href="{{ route('credits') }}">Site Credits</a>
-        </div>
+    <div class="bg-dracgrey x-screen text-white h-12 mx-auto flex flex-col items-center">
+        <nav class="py-4 px-6 flex flex-row flex-wrap justify-between font-sans w-full">
+            <a class="text-white" href="{{ route('credits') }}">Site Credits</a>
+            <a class="text-white" href="{{ route('privacy') }}">Privacy Policy</a>
+            <a class="text-white" href="{{ route('about') }}">About</a>
+        </nav>
     </div>
+    <p class="bg-dracgrey x-screen text-white font-sans text-center">© 2020 A Novel Experience</p>
 </body>
 </html>

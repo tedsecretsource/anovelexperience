@@ -1,4 +1,56 @@
-@import url(https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap);/**
+@import url(https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap);/* https://www.florin-pop.com/blog/2019/03/css-pulse-effect/ */
+
+.beating-heart {
+  transform: scale(0.8);
+  -webkit-animation: pulse-heartbeat 2s infinite;
+          animation: pulse-heartbeat 2s infinite;
+}
+
+@-webkit-keyframes pulse-heartbeat {
+  0% {
+    transform: scale(0.8);
+  }
+
+  15% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(0.9);
+  }
+
+  25% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+@keyframes pulse-heartbeat {
+  0% {
+    transform: scale(0.8);
+  }
+
+  15% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(0.9);
+  }
+
+  25% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+/**
  * This injects Tailwind's base styles, which is a combination of
  * Normalize.css and some additional base styles.
  *
@@ -667,6 +719,13 @@ p {
 a {
   color: #8a0303;
   text-decoration: underline;
+}
+
+ul {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  list-style-type: disc;
+  list-style-position: outside;
 }
 
 /**
@@ -147592,3 +147651,4 @@ a {
     transition-duration: 1000ms;
   }
 }
+
