@@ -1,7 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.dracula')
 
 @section('content')
-    <div class="container mx-auto">
+    @include('default-banner')
+
+    <div class="container mx-auto p-6">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
 

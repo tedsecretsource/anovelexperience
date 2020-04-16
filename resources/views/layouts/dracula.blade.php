@@ -93,10 +93,10 @@
     </div>
 
     <div class="bg-dracgrey x-screen text-white h-12 mx-auto flex flex-col items-center">
-        <nav class="py-4 px-6 flex flex-row flex-wrap justify-between font-sans w-full">
-            <a class="text-white" href="{{ route('credits') }}">Site Credits</a>
-            <a class="text-white" href="{{ route('privacy') }}">Privacy Policy</a>
-            <a class="text-white" href="{{ route('about') }}">About</a>
+        <nav class="py-4 px-6 flex flex-row flex-wrap font-sans w-full text-center">
+            <a class="text-white w-1/3" href="{{ route('credits') }}">Site Credits</a>
+            <a class="text-white w-1/3" href="{{ route('privacy') }}">Privacy Policy</a>
+            <a class="text-white w-1/3" href="{{ route('about') }}">About</a>
         </nav>
     </div>
     <p class="bg-dracgrey x-screen text-white font-sans text-center">© 2020 A Novel Experience</p>

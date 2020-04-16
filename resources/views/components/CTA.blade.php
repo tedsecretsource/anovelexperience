@@ -1,5 +1,6 @@
 <a href="{{ $url }}" class="
     p-3
+    self-center
     transition duration-500 ease-in-out transform
     hover:scale-150
     @if (true === $bg_transparent)
