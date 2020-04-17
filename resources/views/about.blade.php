@@ -3,7 +3,7 @@
 @section('content')
     @include('default-banner')
     <section class="px-6 py-4 w-full">
-        <h1>Our Team</h1>
+        <h1 class="text-center">Our Team</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div class="flex flex-col items-center">
                 <div class="max-w-sm">

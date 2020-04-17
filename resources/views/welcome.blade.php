@@ -3,7 +3,7 @@
 @section('content')
     @include('default-banner')
 
-    <section class="py-4 px-6 mt-6 flex flex-col">
+    <section class="py-4 px-6 flex flex-col">
         <h2 class="text-center">A New Concept in Entertainment</h2>
         <p class="mb-8">Dracula.email is a new concept in entertainment that allows you to read epistolary novels such as Dracula online. By combining the quality of epistolary novels like Bram Stoker’s Dracula with the intimacy of email, we bring you even closer to living the chilling events and dynamic characters. Subscribe now to receive the first 10 chapters for free. You can cancel at any time by contacting us via our contact form.</p>
 
