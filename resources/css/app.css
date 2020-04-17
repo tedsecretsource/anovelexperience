@@ -14,7 +14,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
 
 h1 {
-    @apply pt-1 pb-4 text-4xl font-sans font-bold leading-tight font-bold tracking-wider antialiased;
+    @apply pt-1 pb-4 text-3xl font-sans font-bold leading-tight tracking-wider antialiased;
 }
 
 h2 {
@@ -29,8 +29,74 @@ h4 {
     @apply pt-1 pb-4 text-lg font-sans font-bold leading-tight tracking-wide antialiased;
 }
 
+@screen md {
+    h1 {
+        @apply text-4xl;
+    }
+
+    h2 {
+        @apply text-3xl;
+    }
+
+    h3 {
+        @apply text-2xl ;
+    }
+
+    h4 {
+        @apply text-xl;
+    }
+}
+
+@screen lg {
+    h1 {
+        @apply text-5xl;
+    }
+
+    h2 {
+        @apply text-4xl;
+    }
+
+    h3 {
+        @apply text-3xl ;
+    }
+
+    h4 {
+        @apply text-2xl;
+    }
+}
+
+@screen xl {
+    h1 {
+        @apply text-6xl;
+    }
+
+    h2 {
+        @apply text-5xl;
+    }
+
+    h3 {
+        @apply text-4xl ;
+    }
+
+    h4 {
+        @apply text-3xl;
+    }
+}
+
 p {
     @apply py-2 leading-normal antialiased;
+}
+
+@screen md {
+    p {
+        @apply text-lg;
+    }
+}
+
+@screen lg {
+    p {
+        @apply text-xl;
+    }
 }
 
 a {

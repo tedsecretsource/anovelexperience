@@ -2,7 +2,7 @@
 
 .beating-heart {
     transform: scale(0.8);
-    animation: pulse-heartbeat 2s infinite;
+    animation: pulse-heartbeat 1s infinite;
 }
 
 @keyframes pulse-heartbeat {
@@ -25,3 +25,18 @@
 	}
 }
 
+.fade-to-black-and-white {
+    animation: drain-blood 20s infinite;
+}
+
+@keyframes drain-blood {
+    0% {
+        filter: grayscale(0%);
+    }
+    50% {
+        filter: grayscale(100%);
+    }
+    100% {
+        filter: grayscale(70%);
+    }
+}

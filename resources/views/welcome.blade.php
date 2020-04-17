@@ -3,8 +3,8 @@
 @section('content')
     @include('default-banner')
 
-    <section class="py-4 px-6 flex flex-col">
-        <h2 class="text-center xl:text-5xl">A New Concept in Entertainment</h2>
+    <section class="py-4 px-6 mt-6 flex flex-col">
+        <h2 class="text-center">A New Concept in Entertainment</h2>
         <p class="mb-8">Dracula.email is a new concept in entertainment that allows you to read epistolary novels such as Dracula online. By combining the quality of epistolary novels like Bram Stoker’s Dracula with the intimacy of email, we bring you even closer to living the chilling events and dynamic characters. Subscribe now to receive the first 10 chapters for free. You can cancel at any time by contacting us via our contact form.</p>
 
         @include('components.CTA', [
@@ -40,8 +40,8 @@
     </section>
 
     <section class="py-4 px-6 leading-normal flex flex-col">
-        <h2 class="pb-5 text-center xl:text-5xl">Read Dracula Online</h2>
-        <h3 class="text-center xl:text-2xl">Receive emails addressed to you from the characters that lived the experience, right in your inbox!</h3>
+        <h2 class="pb-5 text-center">Read Dracula Online</h2>
+        <h3 class="text-center">Receive emails addressed to you from the characters that lived the experience, right in your inbox!</h3>
         <p class="text-left">Want to read Dracula online? Sign up for free and embark on the most incredible reading experience: read the classic gothic novel Dracula at the pace of the story and immerse yourself into the world of the most horrific vampire! </p>
         <p class="text-left">The 1897 Gothic horror classic from Bram Stoker is an epistolary novel; it consists of a collection of diary entries, letters, and other materials written by the characters of the story. From the moment you sign up, you will start receiving by email the pieces that comprise the novel at the pace they were written. You will start experiencing the most fantastic reading immersion you have ever had.</p>
         <p class="text-left"><a href="{{ route('register') }}">Sign up for free now</a>, and the first entry in Jonathan Harker’s journal will be waiting for you in your inbox. Be prepared to get hooked!</p>

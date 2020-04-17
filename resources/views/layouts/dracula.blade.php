@@ -22,7 +22,7 @@
         @if(Route::has('login'))
 
         <nav x-data="{ open: false }" class="bg-dracgrey font-sans">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="max-w-screen-lg mx-auto ">
             <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out">
@@ -37,8 +37,8 @@
                 </div>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex">
-                        <a href="{{ route('welcome') }}" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Home</a>
-                        <a href="{{ route('epistolary-novels') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Epistolary Novels</a>
+                        <a href="{{ route('welcome') }}" class="px-3 py-2 rounded-md text-sm font-medium leading-5 {{ Route::currentRouteName() == 'welcome' ? 'bg-gray-900 text-white' : 'text-gray-300' }} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Home</a>
+                        <a href="{{ route('epistolary-novels') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 {{ Route::currentRouteName() == 'epistolary-novels' ? 'bg-gray-900 text-white' : 'text-gray-300' }} hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Epistolary Novels</a>
                         </div>
                 </div>
             </div>
@@ -65,10 +65,14 @@
                     </div>
                 </div>
             @else
-            <a href="{{ route('login') }}" class="no-underline hover:underline text-lg font-normal uppercase pr-6 text-gray-100">{{ __('Login') }}</a>
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="no-underline hover:underline text-lg font-normal uppercase text-gray-100">{{ __('Register') }}</a>
-            @endif
+            <div class="pr-6">
+                <!-- login link -->
+                <a href="{{ route('login') }}" class="no-underline hover:underline text-lg font-normal uppercase pr-6 text-gray-100">{{ __('Login') }}</a>
+                @if (Route::has('register'))
+                    <!-- register link -->
+                    <a href="{{ route('register') }}" class="no-underline hover:underline text-lg font-normal uppercase text-gray-100">{{ __('Register') }}</a>
+                @endif
+            </div>
             @endauth
             </div>
         </div>
