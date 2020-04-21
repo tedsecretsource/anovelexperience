@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap);/* https://www.florin-pop.com/blog/2019/03/css-pulse-effect/ */
+@import url(https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap);@import url(https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap);@import url(https://fonts.googleapis.com/css2?family=Pirata+One&display=swap);@import url(https://fonts.googleapis.com/css2?family=Nosifer&display=swap);@import url(https://fonts.googleapis.com/css2?family=New+Rocker&display=swap);@import url(https://fonts.googleapis.com/css2?family=Astloch:wght@400;700&display=swap);@import url(https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap);@import url(https://fonts.googleapis.com/css2?family=Special+Elite&display=swap);@import url(https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap);@import url(https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap);@import url(https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap);@import url(https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap);/* https://www.florin-pop.com/blog/2019/03/css-pulse-effect/ */
 
 .beating-heart {
   transform: scale(0.8);
@@ -661,7 +661,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: Courier, Courier New, Consola, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /**
@@ -7687,7 +7687,55 @@ ul {
 }
 
 .font-mono {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: Courier, Courier New, Consola, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.font-gothic-intense {
+  font-family: UnifrakturMaguntia;
+}
+
+.font-gothic-mild {
+  font-family: Pirata One;
+}
+
+.font-gothic-modern {
+  font-family: Astloch;
+}
+
+.font-gothic-modern-thick {
+  font-family: Berkshire Swash;
+}
+
+.font-gothic-extra-mild {
+  font-family: New Rocker;
+}
+
+.font-typewriter-heavy {
+  font-family: Special Elite;
+}
+
+.font-cursive-rough {
+  font-family: Homemade Apple;
+}
+
+.font-cursive-soft {
+  font-family: Cedarville Cursive;
+}
+
+.font-handwriting-block-letters {
+  font-family: Nothing You Could Do;
+}
+
+.font-handwriting-caligraphic {
+  font-family: Monsieur La Doulaise;
+}
+
+.font-handwriting-cursive {
+  font-family: Herr Von Muellerhoff;
+}
+
+.font-bleeding-caps {
+  font-family: Nosifer;
 }
 
 .font-hairline {
@@ -36969,7 +37017,55 @@ ul {
   }
 
   .sm\:font-mono {
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: Courier, Courier New, Consola, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .sm\:font-gothic-intense {
+    font-family: UnifrakturMaguntia;
+  }
+
+  .sm\:font-gothic-mild {
+    font-family: Pirata One;
+  }
+
+  .sm\:font-gothic-modern {
+    font-family: Astloch;
+  }
+
+  .sm\:font-gothic-modern-thick {
+    font-family: Berkshire Swash;
+  }
+
+  .sm\:font-gothic-extra-mild {
+    font-family: New Rocker;
+  }
+
+  .sm\:font-typewriter-heavy {
+    font-family: Special Elite;
+  }
+
+  .sm\:font-cursive-rough {
+    font-family: Homemade Apple;
+  }
+
+  .sm\:font-cursive-soft {
+    font-family: Cedarville Cursive;
+  }
+
+  .sm\:font-handwriting-block-letters {
+    font-family: Nothing You Could Do;
+  }
+
+  .sm\:font-handwriting-caligraphic {
+    font-family: Monsieur La Doulaise;
+  }
+
+  .sm\:font-handwriting-cursive {
+    font-family: Herr Von Muellerhoff;
+  }
+
+  .sm\:font-bleeding-caps {
+    font-family: Nosifer;
   }
 
   .sm\:font-hairline {
@@ -66237,7 +66333,55 @@ ul {
   }
 
   .md\:font-mono {
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: Courier, Courier New, Consola, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .md\:font-gothic-intense {
+    font-family: UnifrakturMaguntia;
+  }
+
+  .md\:font-gothic-mild {
+    font-family: Pirata One;
+  }
+
+  .md\:font-gothic-modern {
+    font-family: Astloch;
+  }
+
+  .md\:font-gothic-modern-thick {
+    font-family: Berkshire Swash;
+  }
+
+  .md\:font-gothic-extra-mild {
+    font-family: New Rocker;
+  }
+
+  .md\:font-typewriter-heavy {
+    font-family: Special Elite;
+  }
+
+  .md\:font-cursive-rough {
+    font-family: Homemade Apple;
+  }
+
+  .md\:font-cursive-soft {
+    font-family: Cedarville Cursive;
+  }
+
+  .md\:font-handwriting-block-letters {
+    font-family: Nothing You Could Do;
+  }
+
+  .md\:font-handwriting-caligraphic {
+    font-family: Monsieur La Doulaise;
+  }
+
+  .md\:font-handwriting-cursive {
+    font-family: Herr Von Muellerhoff;
+  }
+
+  .md\:font-bleeding-caps {
+    font-family: Nosifer;
   }
 
   .md\:font-hairline {
@@ -95505,7 +95649,55 @@ ul {
   }
 
   .lg\:font-mono {
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: Courier, Courier New, Consola, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .lg\:font-gothic-intense {
+    font-family: UnifrakturMaguntia;
+  }
+
+  .lg\:font-gothic-mild {
+    font-family: Pirata One;
+  }
+
+  .lg\:font-gothic-modern {
+    font-family: Astloch;
+  }
+
+  .lg\:font-gothic-modern-thick {
+    font-family: Berkshire Swash;
+  }
+
+  .lg\:font-gothic-extra-mild {
+    font-family: New Rocker;
+  }
+
+  .lg\:font-typewriter-heavy {
+    font-family: Special Elite;
+  }
+
+  .lg\:font-cursive-rough {
+    font-family: Homemade Apple;
+  }
+
+  .lg\:font-cursive-soft {
+    font-family: Cedarville Cursive;
+  }
+
+  .lg\:font-handwriting-block-letters {
+    font-family: Nothing You Could Do;
+  }
+
+  .lg\:font-handwriting-caligraphic {
+    font-family: Monsieur La Doulaise;
+  }
+
+  .lg\:font-handwriting-cursive {
+    font-family: Herr Von Muellerhoff;
+  }
+
+  .lg\:font-bleeding-caps {
+    font-family: Nosifer;
   }
 
   .lg\:font-hairline {
@@ -124773,7 +124965,55 @@ ul {
   }
 
   .xl\:font-mono {
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: Courier, Courier New, Consola, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .xl\:font-gothic-intense {
+    font-family: UnifrakturMaguntia;
+  }
+
+  .xl\:font-gothic-mild {
+    font-family: Pirata One;
+  }
+
+  .xl\:font-gothic-modern {
+    font-family: Astloch;
+  }
+
+  .xl\:font-gothic-modern-thick {
+    font-family: Berkshire Swash;
+  }
+
+  .xl\:font-gothic-extra-mild {
+    font-family: New Rocker;
+  }
+
+  .xl\:font-typewriter-heavy {
+    font-family: Special Elite;
+  }
+
+  .xl\:font-cursive-rough {
+    font-family: Homemade Apple;
+  }
+
+  .xl\:font-cursive-soft {
+    font-family: Cedarville Cursive;
+  }
+
+  .xl\:font-handwriting-block-letters {
+    font-family: Nothing You Could Do;
+  }
+
+  .xl\:font-handwriting-caligraphic {
+    font-family: Monsieur La Doulaise;
+  }
+
+  .xl\:font-handwriting-cursive {
+    font-family: Herr Von Muellerhoff;
+  }
+
+  .xl\:font-bleeding-caps {
+    font-family: Nosifer;
   }
 
   .xl\:font-hairline {
@@ -154041,7 +154281,55 @@ ul {
   }
 
   .\32xl\:font-mono {
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: Courier, Courier New, Consola, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .\32xl\:font-gothic-intense {
+    font-family: UnifrakturMaguntia;
+  }
+
+  .\32xl\:font-gothic-mild {
+    font-family: Pirata One;
+  }
+
+  .\32xl\:font-gothic-modern {
+    font-family: Astloch;
+  }
+
+  .\32xl\:font-gothic-modern-thick {
+    font-family: Berkshire Swash;
+  }
+
+  .\32xl\:font-gothic-extra-mild {
+    font-family: New Rocker;
+  }
+
+  .\32xl\:font-typewriter-heavy {
+    font-family: Special Elite;
+  }
+
+  .\32xl\:font-cursive-rough {
+    font-family: Homemade Apple;
+  }
+
+  .\32xl\:font-cursive-soft {
+    font-family: Cedarville Cursive;
+  }
+
+  .\32xl\:font-handwriting-block-letters {
+    font-family: Nothing You Could Do;
+  }
+
+  .\32xl\:font-handwriting-caligraphic {
+    font-family: Monsieur La Doulaise;
+  }
+
+  .\32xl\:font-handwriting-cursive {
+    font-family: Herr Von Muellerhoff;
+  }
+
+  .\32xl\:font-bleeding-caps {
+    font-family: Nosifer;
   }
 
   .\32xl\:font-hairline {

@@ -43,9 +43,5 @@ Route::middleware(['auth'])->group(function () {
         return view('settings');
     })->name('settings');
 
-    Route::get('/settings/password', 'SettingsController@password')->name('settings.password');
-
-    Route::post('/settings/password', 'SettingsController@update_password')->name('settings.password.update');
-
     Route::get(config('backpack.base.route_prefix') . '/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('backpack.logout');
 });

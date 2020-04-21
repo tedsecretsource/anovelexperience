@@ -20,8 +20,21 @@ module.exports = {
                 // => @media (min-width: 1280px) { ... }
             },
             fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-                serif: ['Playfair Display', ...defaultTheme.fontFamily.serif]
+                'sans': ['Inter var', ...defaultTheme.fontFamily.sans],
+                'serif': ['Playfair Display', ...defaultTheme.fontFamily.serif],
+                'mono': ['Courier', 'Courier New', 'Consola', ...defaultTheme.fontFamily.mono],
+                'gothic-intense': ['UnifrakturMaguntia'],
+                'gothic-mild': ['Pirata One'],
+                'gothic-modern': ['Astloch'],
+                'gothic-modern-thick': ['Berkshire Swash'],
+                'gothic-extra-mild': ['New Rocker'],
+                'typewriter-heavy': ['Special Elite'],
+                'cursive-rough': ['Homemade Apple'],
+                'cursive-soft': ['Cedarville Cursive'],
+                'handwriting-block-letters': ['Nothing You Could Do'],
+                'handwriting-caligraphic': ['Monsieur La Doulaise'],
+                'handwriting-cursive': ['Herr Von Muellerhoff'],
+                'bleeding-caps': ['Nosifer']
             },
             colors: {
                 dracgrey: '#24292e',
