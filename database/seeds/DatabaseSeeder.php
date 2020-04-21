@@ -17,8 +17,14 @@ class DatabaseSeeder extends Seeder
             'email'    => 'tedmasterweb@gmail.com',
             'password' => Hash::make(rand(1323214, 908098008))
         ]);
+        $julien = App\User::create([
+            'name'     => 'Julien Leleviere',
+            'email'    => 'julien.leleviere@gmail.com',
+            'password' => Hash::make(rand(1323214, 908098008))
+        ]);
         $role = Role::create(['name' => 'administrator']);
         $ted->assignRole('administrator');
+        $julien->assignRole('administrator');
         $this->call(SubscriptionStatusTableSeeder::class);
         $this->call(SubscriptionTypeTableSeeder::class);
     }
