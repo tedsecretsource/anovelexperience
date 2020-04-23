@@ -18,6 +18,7 @@ class CreateEntryAuthorsTable extends Migration
             $table->string('name', 255)->nullable();
             $table->string('font', 255)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

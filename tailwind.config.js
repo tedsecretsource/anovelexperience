@@ -20,9 +20,12 @@ module.exports = {
                 // => @media (min-width: 1280px) { ... }
             },
             fontFamily: {
-                'sans': ['Inter var', ...defaultTheme.fontFamily.sans],
+                'sans': ['Inter', ...defaultTheme.fontFamily.sans],
                 'serif': ['Playfair Display', ...defaultTheme.fontFamily.serif],
-                'mono': ['Courier', 'Courier New', 'Consola', ...defaultTheme.fontFamily.mono],
+                'mono': ['Consolas', 'Courier', 'Courier New', ...defaultTheme.fontFamily.mono],
+                'serif-one': ['Faustina', 'Times', 'Times New Roman', 'serif'],
+                'serif-two': ['Josefin Slab', 'Times', 'Times New Roman', 'serif'],
+                'serif-three': ['Rokkitt', 'Times', 'Times New Roman', 'serif'],
                 'gothic-intense': ['UnifrakturMaguntia'],
                 'gothic-mild': ['Pirata One'],
                 'gothic-modern': ['Astloch'],

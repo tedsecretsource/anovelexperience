@@ -17,6 +17,7 @@ class CreateSubscriptionTypesTable extends Migration
             $table->id();
             $table->string('type')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

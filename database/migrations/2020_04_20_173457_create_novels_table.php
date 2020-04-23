@@ -22,10 +22,11 @@ class CreateNovelsTable extends Migration
                 ->comment('The date and time of the first entry');
             $table->text('summary')->comment('Summary of the novel')
                 ->nullable();
-            $table->integer('subscriptions')->default(0)
+            $table->integer('subscriptions')->default(0)->nullable()
                 ->comment('The total number of times someone has subscribed to this novel');
-            $table->string('novel_emoji', 100)->default('🧛')->nullable();
+            $table->string('novel_emoji', 100)->default('U+1F9DB')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

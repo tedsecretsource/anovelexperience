@@ -17,6 +17,7 @@ class CreateSubscriptionsTable extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
+            $table->bigInteger('novel_id');
             $table->dateTime('subscribed')->useCurrent();
             $table->integer('type_id');
             $table->integer('status_id');
@@ -25,6 +26,7 @@ class CreateSubscriptionsTable extends Migration
             $table->dateTime('first_entry_date')->nullable();
             $table->float('pace', 3, 2)->default(1.00);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
