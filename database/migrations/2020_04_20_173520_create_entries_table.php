@@ -15,14 +15,15 @@ class CreateEntriesTable extends Migration
     {
         Schema::create('entries', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('novel_id')->nullable();
-            $table->bigInteger('author_id')->nullable();
+            $table->foreignId('novel_id')->constrained()->onDelete('cascade');
+            $table->bigInteger('entry_author_id');
             $table->integer('order');
             $table->dateTime('entry_date')->nullable();
             $table->longText('entry')->nullable();
             $table->text('editors_note')->nullable();
             $table->string('font', 255)->nullable()->default('serif');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

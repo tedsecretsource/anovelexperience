@@ -19,6 +19,7 @@ class CreateSentLogsTable extends Migration
             $table->bigInteger('subscription_id')->nullable();
             $table->bigInteger('entry_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

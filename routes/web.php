@@ -44,4 +44,5 @@ Route::middleware(['auth'])->group(function () {
     })->name('settings');
 
     Route::get(config('backpack.base.route_prefix') . '/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('backpack.logout');
+    Route::get(config('backpack.base.route_prefix') . '/login', '\App\Http\Controllers\Auth\LoginController@login')->name('backpack.login');
 });
