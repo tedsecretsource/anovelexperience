@@ -12,9 +12,4 @@ class SubscriptionStatus extends Model
     protected $fillable = [
         'status'
     ];
-
-    public function subscriptions()
-    {
-        return $this->hasMany(Subscription::class);
-    }
 }

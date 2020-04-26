@@ -745,6 +745,30 @@ h4 {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#main-content form {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-color: #f9fafb;
+  border-radius: 0.375rem;
+}
+
+#main-content select, #main-content input, #main-content button {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #f4f5f7;
+  border-color: #e5e7eb;
+  border-width: 2px;
+  border-radius: 0.125rem;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
 @media (min-width: 768px) {
   h1 {
     font-size: 2.25rem;

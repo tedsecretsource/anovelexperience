@@ -14,7 +14,10 @@ class NovelController extends Controller
      */
     public function index()
     {
-        //
+        return view('novel.index', [
+            'user' => auth()->user(),
+            'novels' => \App\Novel::all()->sortBy('title')
+        ]);
     }
 
     /**
@@ -22,9 +25,13 @@ class NovelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function subscribe(Request $request)
     {
-        //
+        // display subscription form
+        return view('subscription_form', [
+            'user' => auth()->user(),
+            'novel' => Novel::find($request->id)
+        ]);
     }
 
     /**
@@ -44,9 +51,63 @@ class NovelController extends Controller
      * @param  \App\Novel  $novel
      * @return \Illuminate\Http\Response
      */
-    public function show(Novel $novel)
+    public function show(Request $request)
     {
-        //
+        $novel = Novel::find($request->id);
+        return view('novel.details', [
+            'novel' => $novel
+        ]);
+    }
+
+    /**
+     * Display the settings for a novel you are subscribed to.
+     *
+     * @param  \App\Novel  $novel
+     * @return \Illuminate\Http\Response
+     */
+    public function settings(Request $request)
+    {
+        $novel = Novel::find($request->id);
+        $user = auth()->user();
+        if ($user->isSubscribed($novel->id)) {
+            $sub = $user->subscriptions
+                ->where('novel_id', $novel->id)
+                ->where('status', '!=', 'canceled')
+                ->where('status', '!=', 'fulfilled')
+                ->first();
+            if ($sub) {
+                return view('novel.settings', [
+                    'novel' => $novel,
+                    'user' => $user,
+                    'subscription' => $sub
+                ]);
+            }
+        }
+        return view('novel.details', [
+            'novel' => $novel
+        ]);
+    }
+
+    public function updateSettings(Request $request)
+    {
+        $novel = Novel::find($request->id);
+        $user = auth()->user();
+        if ($user->isSubscribed($novel->id)) {
+            $sub = $user->subscriptions
+                ->where('novel_id', $novel->id)
+                ->where('status', '!=', 'canceled')
+                ->where('status', '!=', 'fulfilled')
+                ->first();
+            if ($sub->count() > 0) {
+                $sub->pace = $request->pace;
+                $sub->status = $request->status ? 'paused' : 'active';
+                $sub->save();
+                return redirect('settings')->with('system-feedback', 'Settings updated!');
+            }
+        }
+        return view('novel.details', [
+            'novel' => $novel
+        ]);
     }
 
     /**

@@ -21,7 +21,11 @@ class Novel extends Model
     protected $guarded = ['id'];
     // protected $fillable = [];
     // protected $hidden = [];
-    // protected $dates = [];
+    protected $dates = [
+        'published',
+        'first_entry_date',
+        'last_entry_date'
+    ];
 
     public function entries()
     {
@@ -31,5 +35,21 @@ class Novel extends Model
     public function subscriptions()
     {
         return $this->hasMany(Subscription::class);
+    }
+
+    public function duration($pace = 1, $format = 'days')
+    {
+        // get the days
+        // divide by pace
+        $days = (int) ceil($this->first_entry_date->diffInDays($this->last_entry_date) / $pace);
+        // return as days (default) or as weeks / months (human)
+        if ('days' === $format) {
+            return $days;
+        } else {
+            // add days to first_entry_date
+            $newenddate = $this->first_entry_date->addDays($days);
+            // return the human difference
+            return $this->first_entry_date->diffForHumans($newenddate, \Carbon\CarbonInterface::DIFF_ABSOLUTE);
+        }
     }
 }

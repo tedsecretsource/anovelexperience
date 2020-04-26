@@ -47,4 +47,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Subscription::class);
     }
+
+    public function isSubscribed($id)
+    {
+        $sub = $this->subscriptions
+            ->where('novel_id', $id)
+            ->where('status', '!=', 'canceled')
+            ->where('status', '!=', 'fulfilled');
+        return $sub->count();
+    }
 }

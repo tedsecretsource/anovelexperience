@@ -12,9 +12,4 @@ class SubscriptionType extends Model
     protected $fillable = [
         'type'
     ];
-
-    public function subscriptions()
-    {
-        return $this->hasMany(Subscription::class);
-    }
 }

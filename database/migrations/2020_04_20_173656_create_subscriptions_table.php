@@ -19,8 +19,8 @@ class CreateSubscriptionsTable extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('novel_id');
             $table->dateTime('subscribed')->useCurrent();
-            $table->integer('type_id');
-            $table->integer('status_id');
+            $table->string('type', 50);
+            $table->string('status', 50);
             $table->string('payment_confirmation_id')->nullable();
             $table->dateTime('payment_date')->nullable();
             $table->dateTime('first_entry_date')->nullable();

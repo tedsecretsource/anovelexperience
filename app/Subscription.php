@@ -38,4 +38,9 @@ class Subscription extends Model
     {
         return $this->belongsTo(Novel::class);
     }
+
+    public function scopeActiveSubscriptions($query)
+    {
+        return $query->where('status_id', 1)->orWhere('status_id', 4);
+    }
 }

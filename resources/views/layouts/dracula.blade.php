@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('page_title') - {{ config('app.name', 'Laravel') }}</title>
     <script src="{{ mix('js/app.js') }}"></script>
 
     <!-- Styles -->
@@ -38,7 +38,7 @@
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex">
                         <a href="{{ route('welcome') }}" class="px-3 py-2 rounded-md text-sm font-medium leading-5 {{ Route::currentRouteName() == 'welcome' ? 'bg-gray-900 text-white' : 'text-gray-300' }} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Home</a>
-                        <a href="{{ route('epistolary-novels') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 {{ Route::currentRouteName() == 'epistolary-novels' ? 'bg-gray-900 text-white' : 'text-gray-300' }} hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Epistolary Novels</a>
+                        <a href="{{ route('novels') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 {{ Route::currentRouteName() == 'novels' ? 'bg-gray-900 text-white' : 'text-gray-300' }} hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Epistolary Novels</a>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
     <div :class="{'block': open, 'hidden': !open}" class="hidden sm:hidden">
         <div class="px-2 pt-2 pb-3">
             <a href="{{ route('welcome') }}" class="px-3 py-2 rounded-md text-sm font-medium leading-5 {{ Route::currentRouteName() == 'welcome' ? 'bg-gray-900 text-white' : 'text-gray-300' }} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Home</a>
-            <a href="{{ route('epistolary-novels') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 {{ Route::currentRouteName() == 'epistolary-novels' ? 'bg-gray-900 text-white' : 'text-gray-300' }} hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Epistolary Novels</a>
+            <a href="{{ route('novels') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 {{ Route::currentRouteName() == 'novels' ? 'bg-gray-900 text-white' : 'text-gray-300' }} hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Epistolary Novels</a>
         </div>
     </div>
 </nav>
@@ -89,16 +89,18 @@
 
 </div>
 
-@yield('system-feedback')
+    @if (session('system-feedback'))
+        <div class="p-2 w-full bg-green-100 border-green-300 border-2 font-sans text-2xl ">{{ session('system-feedback') }}</div>
+    @endif
 
-    <div class="max-w-screen-lg mx-auto">
+    <div id="main-content" class="max-w-screen-lg mx-auto">
 
         <main class="flex flex-col items-center">
             @yield('content')
         </main>
     </div>
 
-    <div class="bg-dracgrey x-screen text-white h-12 mx-auto flex flex-col items-center">
+    <div class="bg-dracgrey x-screen text-white h-12 mt-12 mx-auto flex flex-col items-center">
         <nav class="py-4 px-6 flex flex-row flex-wrap font-sans w-full text-center">
             <a class="text-white w-1/3" href="{{ route('credits') }}">Site Credits</a>
             <a class="text-white w-1/3" href="{{ route('privacy') }}">Privacy Policy</a>
