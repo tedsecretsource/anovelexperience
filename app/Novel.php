@@ -52,4 +52,9 @@ class Novel extends Model
             return $this->first_entry_date->diffForHumans($newenddate, \Carbon\CarbonInterface::DIFF_ABSOLUTE);
         }
     }
+
+    public function amountAsCurrency($symbol = '')
+    {
+        return number_format(($this->amount / 100), 2) . $symbol;
+    }
 }

@@ -21,12 +21,38 @@ class NovelController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for subscribing.
      *
      * @return \Illuminate\Http\Response
      */
+    public function subscribeForm(Request $request)
+    {
+        $user = auth()->user();
+        $novel = Novel::find($request->id);
+        if ($user->isSubscribed($novel->id)) {
+            return redirect()->route('novel.settings', [$novel])->with('system-feedback', 'You are already subscribed to this novel');
+        }
+        // display subscription form
+        return view('subscription_form', [
+            'user' => auth()->user(),
+            'novel' => Novel::find($request->id)
+        ]);
+    }
+
+    /**
+     * Update or create subscription
+     *
+     * @param Request $request
+     * @return void
+     */
     public function subscribe(Request $request)
     {
+        $user = auth()->user();
+        $novel = Novel::find($request->id);
+
+        if ($user->isSubscribed($novel->id)) {
+            return redirect()->route('novel.settings', [$novel])->with('system-feedback', 'You are already subscribed to this novel');
+        }
         // display subscription form
         return view('subscription_form', [
             'user' => auth()->user(),

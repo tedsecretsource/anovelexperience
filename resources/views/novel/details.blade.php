@@ -12,7 +12,7 @@
             <p><b>Published:</b> {{ $novel->published->toFormattedDateString() }}</p>
             <p><b>First Entry:</b> {{ $novel->first_entry_date->toFormattedDateString() }}</p>
             <p><b>Last Entry:</b> {{ $novel->last_entry_date->toFormattedDateString() }}</p>
-            <p><b>Duration:</b> {{ $novel->duration() }}</p>
+            <p><b>Duration:</b> about {{ $novel->duration(1, 'human') }}</p>
             <p>{{ $novel->summary }}</p>
         @else
             <p>We don't have any novels in our collection with that ID.</p>

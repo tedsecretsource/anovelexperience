@@ -10,6 +10,7 @@
 
     <title>@yield('page_title') - {{ config('app.name', 'Laravel') }}</title>
     <script src="{{ mix('js/app.js') }}"></script>
+    @yield('js-head')
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -108,5 +109,6 @@
         </nav>
     </div>
     <p class="bg-dracgrey x-screen text-white font-sans text-center">© 2020 A Novel Experience</p>
+@yield('js-footer')
 </body>
 </html>

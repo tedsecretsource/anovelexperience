@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,8 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::post('/paypalipn', 'SubscriptionController@paypalipn');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -38,7 +41,8 @@ Route::get('/epistolary-novels/{id}', 'NovelController@show')->name('novel.detai
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/settings', 'SettingsController@main')->name('settings');
-    Route::get('/epistolary-novels/{id}/subscribe', 'NovelController@subscribe')->name('novel.subscribe');
+    Route::get('/epistolary-novels/{id}/subscribe', 'NovelController@subscribeForm')->name('novel.subscribe');
+    Route::post('/epistolary-novels/{id}/subscribe', 'SubscriptionController@store')->name('novel.subscribe');
     Route::get('/epistolary-novels/{id}/settings', 'NovelController@settings')->name('novel.settings');
     Route::post('/epistolary-novels/{id}/settings', 'NovelController@updateSettings')->name('novel.settings');
 

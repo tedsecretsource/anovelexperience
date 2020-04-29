@@ -1,4 +1,4 @@
-<select name="pace" id="pace">
+<select name="pace" id="pace" class="block mt-2">
     <option value="0.5" data-days="{{ $novel->duration(0.5, 'human') }}" {{ $subscription->pace == 0.50 ? 'selected' : ''}}>Half (about {{ $novel->duration(0.5, 'human') }})</option>
     <option value="1" data-days="{{ $novel->duration(1, 'human') }}" {{ $subscription->pace == 1.00 ? 'selected' : ''}}>Standard (about {{ $novel->duration(1, 'human') }})</option>
     <option value="2" data-days="{{ $novel->duration(2, 'human') }}" {{ $subscription->pace == 2.00 ? 'selected' : ''}}>Double (about {{ $novel->duration(2, 'human') }})</option>
