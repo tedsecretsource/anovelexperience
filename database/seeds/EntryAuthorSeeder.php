@@ -5,10 +5,13 @@ use Illuminate\Database\Seeder;
 // composer require laracasts/testdummy
 use Laracasts\TestDummy\Factory as TestDummy;
 
-class EntryAuthorSeederTableSeeder extends Seeder
+class EntryAuthorTableSeeder extends Seeder
 {
     public function run()
     {
-        // TestDummy::times(20)->create('App\Post');
+        $author = App\EntryAuthor::create([
+            'name'     => 'Susan',
+            'font'    => 'serif-one',
+        ]);
     }
 }
