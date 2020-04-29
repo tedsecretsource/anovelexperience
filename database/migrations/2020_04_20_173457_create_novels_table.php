@@ -16,18 +16,18 @@ class CreateNovelsTable extends Migration
         Schema::create('novels', function (Blueprint $table) {
             $table->id();
             $table->string('title', 255);
-            $table->int('amount')->default(490);
+            $table->integer('amount')->default(490);
             $table->string('author', 255);
             $table->date('published')->nullable();
-            $table->dateTime('first_entry_date')
+            $table->dateTime('first_entry_date')->default('1000-01-01 00:00:00')
                 ->comment('The date and time of the first entry');
-            $table->dateTime('last_entry_date')
+            $table->dateTime('last_entry_date')->default('1000-01-01 00:00:00')
                 ->comment('The date and time of the last entry');
             $table->text('summary')->comment('Summary of the novel')
                 ->nullable();
             $table->integer('subscriptions')->default(0)->nullable()
                 ->comment('The total number of times someone has subscribed to this novel');
-            $table->string('novel_emoji', 100)->default('U+1F9DB')->nullable();
+            $table->string('novel_emoji', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

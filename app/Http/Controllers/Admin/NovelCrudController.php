@@ -36,8 +36,40 @@ class NovelCrudController extends CrudController
     {
         $this->crud->setValidation(NovelRequest::class);
 
-        // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'title',
+            'label' => 'Title',
+            'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'name' => 'author',
+            'label' => 'Author',
+            'type' => 'text'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'first_entry_date',
+            'label' => 'Date of First Entry',
+            'type' => 'datetime'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'last_entry_date',
+            'label' => 'Date of Last Entry',
+            'type' => 'datetime'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'summary',
+            'label' => 'Summary',
+            'type' => 'textarea'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'novel_emoji',
+            'label' => 'Emoji',
+            'type' => 'text'
+        ]);
     }
 
     protected function setupUpdateOperation()

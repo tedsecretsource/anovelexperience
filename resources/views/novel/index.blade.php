@@ -7,6 +7,22 @@ Our Collection of Epistolary Novels
 @include('default-banner')
     <section class="px-6 py-4 w-full">
         <h1>Our Collection of Epistolary Novels</h1>
+        <ul>
+        @forelse ($novels as $novel)
+            <li class="pb-2 text-2xl">
+                <a href="{{ route('novel.detail', ['id' => $novel->id]) }}">{{ $novel->title }}</a>
+                @if ($user)
+                @if ($user->isSubscribed($novel->id))
+                    <a class="btn" href="{{ route('novel.settings', ['id' => $novel->id]) }}">(Settings)</a>
+                @else
+                    <a class="btn" href="{{ route('novel.subscribe', ['id' => $novel->id]) }}">(Subscribe)</a>
+                @endif
+                @endif
+            </li>
+        @empty
+            <li>We don't have any novels in our collection.</li>
+        @endforelse
+        </ul>
         <p>Epistolary novels are books in which the story unfolds in the form of journal entries, letters, or other dated media.</p>
         <p>A Novel Experience makes reading these types of books a new, more intimate experience by sending you each entry by email on the (relative) date it appears in the book.
             We say "relative" because you wouldn't want to have to wait until May 3rd to start reading Dracula. Instead, you can start reading immediately
