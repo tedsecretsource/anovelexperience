@@ -12,7 +12,7 @@ class Novel extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title', 'author', 'published', 'first_entry_date', 'summary', 'subscriptions', 'novel_emoji',
+        'title', 'author', 'published', 'first_entry_date', 'last_entry_date', 'summary', 'subscriptions', 'novel_emoji',
     ];
 
     protected $table = 'novels';
@@ -24,7 +24,7 @@ class Novel extends Model
     protected $dates = [
         'published',
         'first_entry_date',
-        'last_entry_date'
+        'last_entry_date',
     ];
 
     public function entries()
