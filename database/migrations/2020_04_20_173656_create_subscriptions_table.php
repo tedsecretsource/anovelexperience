@@ -24,6 +24,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('payment_confirmation_id')->nullable();
             $table->dateTime('payment_date')->nullable();
             $table->integer('payment_amount')->nullable();
+            $table->string('payment_status')->nullable();
             $table->dateTime('first_entry_date')->nullable();
             $table->float('pace', 3, 2)->default(1.00);
             $table->timestamps();

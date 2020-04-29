@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+use Illuminate\Http\Request;
+
 class PaypalIPN
 {
     /** @var bool Indicates if the sandbox endpoint is used. */
@@ -60,10 +62,10 @@ class PaypalIPN
      * @return bool
      * @throws Exception
      */
-    public function verifyIPN()
+    public function verifyIPN(Request $request)
     {
-        if (!count($_POST)) {
-            throw new Exception("Missing POST Data");
+        if (!count($request->all())) {
+            throw new \Exception("Missing POST Data");
         }
 
         $raw_post_data = file_get_contents('php://input');
