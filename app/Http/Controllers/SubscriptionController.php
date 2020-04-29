@@ -43,7 +43,6 @@ class SubscriptionController extends Controller
             */
             if ($request->receiver_email != config('anovelexperience.receiver_email')) {
                 activity()
-                    ->causedBy('PayPalIPN')
                     ->withProperties(['receiver_email' => $request->receiver_email])
                     ->log('Receiver email did not match');
                 abort(400);
@@ -56,7 +55,6 @@ class SubscriptionController extends Controller
                 ->where('payment_status', 'LIKE', 'Completed');
             if ($sub->count() > 0) {
                 activity()
-                    ->causedBy('PayPalIPN')
                     ->withProperties(['txn_id' => $request->txn_id, 'payment_status' => 'Completed'])
                     ->log('Duplicate IPN Notification');
                 header("HTTP/1.1 200 OK");
@@ -66,7 +64,6 @@ class SubscriptionController extends Controller
             */
             if (strtolower($request->payment_status) != 'completed') {
                 activity()
-                    ->causedBy('PayPalIPN')
                     ->withProperties(['payment_status' => $request->payment_status])
                     ->log('Payment has not completed');
                 abort(400);
@@ -76,7 +73,6 @@ class SubscriptionController extends Controller
             */
             if ($request->mc_gross * 100 <> $novel->amount) {
                 activity()
-                    ->causedBy('PayPalIPN')
                     ->withProperties(['payment_status' => $request->payment_status])
                     ->log('Payment has not completed');
                 abort(400);
