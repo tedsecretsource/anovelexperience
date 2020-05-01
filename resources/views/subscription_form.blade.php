@@ -6,14 +6,41 @@
 </script>
 @endsection
 
+@section('page_title')
+Subscribe to {{ $novel->title }}
+@endsection
+
 @section('content')
     @include('default-banner')
     <section class="px-6 py-4 w-full">
         <h2 class="">Subscribe to {{ $novel->title }}</h2>
-        <form class="w3-container w3-display-middle w3-card-4 " method="POST" id="payment-form"  action="/payment/add-funds/paypal">
+        @if ($errors->any())
+            <div class="p-8 bg-dracred-100 text-white w-full text-xl font-sans">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form class="w3-container w3-display-middle w3-card-4 relative " method="POST" id="payment-form"  action="{{ route('novel.subscribe', [$novel->id]) }}">
             {{ csrf_field() }}
             <input type="hidden" name="novel" value="{{ $novel->title }}">
             <input type="hidden" name="novel_id" value="{{ $novel->id }}">
+            <input type="hidden" name="payment_id" id="payment_id" value="">
+            <div id="spinner" class="hidden flex flex-col justify-center items-center w-full h-full bg-gray-100 bg-opacity-25 absolute inset-0 object-cover cursor-wait font-sans text-xl" style="opacity: 0.9; z-index: 101">
+                <div style="color: #f4696b" class="la-line-spin-fade-rotating la-2x">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <p>Processing your order. Please wait…</p>
+            </div>
             <h4 class="w3-text-blue">Payment Form</h4>
             <p class="mb-8">Please select the type of subscription (full, gift, or trial), the pace at which you would like to read this novel, and when you would like the subscription to start</p>
             <fieldset class="flex flex-row flex-wrap w-2/3 mb-2">
@@ -87,6 +114,9 @@
                   paypal.Buttons({
                       createOrder: function(data, actions) {
                         // This function sets up the details of the transaction, including the amount and line item details.
+                        // disable the form so people don't click twice and show a spinner
+                        let spinner = document.getElementById('spinner');
+                        spinner.classList.remove('hidden');
                         let fed = document.querySelector('#first_entry_date').options[document.querySelector('#first_entry_date').selectedIndex].value;
                         let pace = document.querySelector('#pace').options[document.querySelector('#pace').selectedIndex].value;
                         let gift = document.querySelector('#gift');
@@ -109,13 +139,18 @@
                     onApprove: function(data, actions) {
                         return actions.order.capture().then(function(details) {
                             // Show a success message to the buyer
-                            console.log(details);
-                            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                            // console.log(details);
+                            if ('gift' != document.getElementById('payment-form').elements['type'].value) {
+                                document.getElementById('gift_email').remove();
+                            }
+                            document.querySelector('#payment_id').value = details.purchase_units[0].payments.captures[0].id;
+                            document.querySelector('#payment-form').submit();
+                            // alert('Transaction completed by ' + details.payer.name.given_name + '!');
                         });
                     },
 
                     onCancel: function (data) {
-                        // Show a cancel page, or return to cart
+                        // re-enable / display form and buttons
                     },
 
                     onError: function (err) {
@@ -125,6 +160,13 @@
                 }).render('#paypal-button-container');
             });
             // This function displays Smart Payment Buttons on your web page.
+
+            document.getElementById('payment-form').addEventListener('submit', function(event) {
+                if(event.currentTarget.elements['type'].value == 'trial') {
+                    let spinner = document.getElementById('spinner');
+                    spinner.classList.remove('hidden');
+                }
+            });
           </script>
     </section>
 @endsection

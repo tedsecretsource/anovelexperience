@@ -146,3 +146,90 @@ To make this site
     ),
   ),
 )  
+
+
+[2020-04-30 00:44:16] local.INFO: array (
+  'id' => 'WH-7GD53810E43219307-42H8169879011635A',
+  'event_version' => '1.0',
+  'create_time' => '2020-04-30T00:43:52.089Z',
+  'resource_type' => 'capture',
+  'resource_version' => '2.0',
+  'event_type' => 'PAYMENT.CAPTURE.COMPLETED',
+  'summary' => 'Payment completed for EUR 4.9 EUR',
+  'resource' => 
+  array (
+    'id' => '4PJ11203B9100783E',
+    'amount' => 
+    array (
+      'currency_code' => 'EUR',
+      'value' => '4.90',
+    ),
+    'final_capture' => true,
+    'seller_protection' => 
+    array (
+      'status' => 'ELIGIBLE',
+      'dispute_categories' => 
+      array (
+        0 => 'ITEM_NOT_RECEIVED',
+        1 => 'UNAUTHORIZED_TRANSACTION',
+      ),
+    ),
+    'seller_receivable_breakdown' => 
+    array (
+      'gross_amount' => 
+      array (
+        'currency_code' => 'EUR',
+        'value' => '4.90',
+      ),
+      'paypal_fee' => 
+      array (
+        'currency_code' => 'EUR',
+        'value' => '0.54',
+      ),
+      'net_amount' => 
+      array (
+        'currency_code' => 'EUR',
+        'value' => '4.36',
+      ),
+    ),
+    'status' => 'COMPLETED',
+    'create_time' => '2020-04-30T00:43:47Z',
+    'update_time' => '2020-04-30T00:43:47Z',
+    'links' => 
+    array (
+      0 => 
+      array (
+        'href' => 'https://api.sandbox.paypal.com/v2/payments/captures/4PJ11203B9100783E',
+        'rel' => 'self',
+        'method' => 'GET',
+      ),
+      1 => 
+      array (
+        'href' => 'https://api.sandbox.paypal.com/v2/payments/captures/4PJ11203B9100783E/refund',
+        'rel' => 'refund',
+        'method' => 'POST',
+      ),
+      2 => 
+      array (
+        'href' => 'https://api.sandbox.paypal.com/v2/checkout/orders/25075818CW306423K',
+        'rel' => 'up',
+        'method' => 'GET',
+      ),
+    ),
+  ),
+  'links' => 
+  array (
+    0 => 
+    array (
+      'href' => 'https://api.sandbox.paypal.com/v1/notifications/webhooks-events/WH-7GD53810E43219307-42H8169879011635A',
+      'rel' => 'self',
+      'method' => 'GET',
+    ),
+    1 => 
+    array (
+      'href' => 'https://api.sandbox.paypal.com/v1/notifications/webhooks-events/WH-7GD53810E43219307-42H8169879011635A/resend',
+      'rel' => 'resend',
+      'method' => 'POST',
+    ),
+  ),
+)  

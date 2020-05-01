@@ -30,7 +30,7 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::post('/paypalipn', 'SubscriptionController@paypalipn');
+Route::post('/paypal_webhook', 'SubscriptionController@paypal_webhook');
 
 Auth::routes();
 
@@ -41,7 +41,7 @@ Route::get('/epistolary-novels/{id}', 'NovelController@show')->name('novel.detai
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/settings', 'SettingsController@main')->name('settings');
-    Route::get('/epistolary-novels/{id}/subscribe', 'NovelController@subscribeForm')->name('novel.subscribe');
+    Route::get('/epistolary-novels/{id}/subscribe', 'SubscriptionController@create')->name('novel.subscribe');
     Route::post('/epistolary-novels/{id}/subscribe', 'SubscriptionController@store')->name('novel.subscribe');
     Route::get('/epistolary-novels/{id}/settings', 'NovelController@settings')->name('novel.settings');
     Route::post('/epistolary-novels/{id}/settings', 'NovelController@updateSettings')->name('novel.settings');

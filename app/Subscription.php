@@ -13,10 +13,12 @@ class Subscription extends Model
         'user_id',
         'novel_id',
         'subscribed',
-        'type_id',
-        'status_id',
+        'type',
+        'status',
         'payment_confirmation_id',
         'payment_date',
+        'payment_amount',
+        'payment_status',
         'first_entry_date',
         'pace'
     ];

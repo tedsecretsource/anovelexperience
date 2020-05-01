@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\ConfirmedPayPalPurchase;
 
 class SubscriptionRequest extends FormRequest
 {
@@ -27,6 +28,8 @@ class SubscriptionRequest extends FormRequest
     {
         return [
             // 'name' => 'required|min:5|max:255'
+            'payment_id' => ['exclude_if:type,trial', new ConfirmedPayPalPurchase],
+            'gift_email' => 'exclude_unless:type,gift|email'
         ];
     }
 
@@ -50,7 +53,8 @@ class SubscriptionRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'payment_id' => 'Sorry, your payment was not successful. Please try again.',
+            'gift_email' => 'Sorry but we need you to enter an email address for your gift subscription.'
         ];
     }
 }
