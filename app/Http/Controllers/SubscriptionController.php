@@ -4,12 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Providers\RouteServiceProvider;
 use App\Classes\PaypalIPN;
 use App\User;
 use App\Novel;
 
 class SubscriptionController extends Controller
 {
+    use ResetsPasswords;
+
+    /**
+     * Where to redirect users after resetting their password.
+     *
+     * @var string
+     */
+    protected $redirectTo = ''; // subscription settings
+
     /**
      * Display a listing of the resource.
      *
@@ -53,6 +65,8 @@ class SubscriptionController extends Controller
         }
         $user_id = auth()->user()->id;
         $who = 'You are';
+        $status = 'active';
+        $hash = '';
         switch ($request->type) {
             case 'gift':
                 $type = 'gift';
@@ -64,6 +78,8 @@ class SubscriptionController extends Controller
                     ]
                 )->id;
                 $who = $request->gift_email . ' is';
+                $status = 'paused';
+                $hash = Str::uuid();
                 break;
 
             case 'full':
@@ -80,13 +96,14 @@ class SubscriptionController extends Controller
             'novel_id' => $request->id,
             'subscribed' => now(),
             'type' => $type,
-            'status' => 'active',
+            'status' => $status,
             'first_entry_date' => $request->first_entry_date,
             'pace' => $request->pace,
             'payment_confirmation_id' => $request->payment_id,
             'payment_date' => \Carbon\Carbon::now()->toDateTimeString(),
             'payment_amount' => $request->amount,
-            'payment_status' => 'active'
+            'payment_status' => 'COMPLETED',
+            'hash' => $hash
         ]);
         $subscription->save();
         // notify gift user via email of the situation

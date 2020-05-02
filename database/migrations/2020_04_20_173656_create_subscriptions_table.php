@@ -4,6 +4,7 @@ use Doctrine\DBAL\Schema\Table;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class CreateSubscriptionsTable extends Migration
 {
@@ -27,6 +28,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('payment_status')->nullable();
             $table->dateTime('first_entry_date')->nullable();
             $table->float('pace', 3, 2)->default(1.00);
+            $table->string('hash', 225)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

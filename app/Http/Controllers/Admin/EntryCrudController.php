@@ -53,6 +53,11 @@ class EntryCrudController extends CrudController
         ]);
         $this->crud->addField(['name' => 'entry_author_id', 'type' => 'relationship', 'entity' => 'author', 'attribute' => 'name']);
         $this->crud->addField([
+            'name' => 'title',
+            'type' => 'text',
+            'label' => 'Entry Title'
+        ]);
+        $this->crud->addField([
             'name' => 'order',
             'type' => 'number',
             'label' => 'Order'

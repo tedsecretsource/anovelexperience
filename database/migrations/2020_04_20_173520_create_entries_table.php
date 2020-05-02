@@ -17,7 +17,9 @@ class CreateEntriesTable extends Migration
             $table->id();
             $table->foreignId('novel_id')->constrained()->onDelete('cascade');
             $table->bigInteger('entry_author_id');
-            $table->integer('order');
+            $table->string('source', 255)->nullable()->comment('Ex. Jonathan Harker\'s Journal');
+            $table->integer('order')->nullable();
+            $table->string('title', 255)->nullable()->comment('A title for this entry - can be made up');
             $table->dateTime('entry_date')->nullable();
             $table->longText('entry')->nullable();
             $table->text('editors_note')->nullable();

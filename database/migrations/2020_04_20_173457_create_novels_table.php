@@ -28,6 +28,7 @@ class CreateNovelsTable extends Migration
             $table->integer('subscriptions')->default(0)->nullable()
                 ->comment('The total number of times someone has subscribed to this novel');
             $table->string('novel_emoji', 100)->nullable();
+            $table->string('send_order')->default('date')->nullable()->comment('What order should entries be sent in, date or order?');
             $table->timestamps();
             $table->softDeletes();
         });

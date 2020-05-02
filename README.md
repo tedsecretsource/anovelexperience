@@ -1,3 +1,17 @@
+TODO
+- Set up email job system
+- Format default emails
+- Format Gift Subscription Email
+- Format Entry email
+- Write tests and algorithm for sending entries
+- configure jobs on server
+
+
+- DONE compose email for gift recipients
+- DONE create email templates for journal entries
+- write code for entry delivery scheduled task
+- test, test, test
+
 1) Set up subscription process and gateway. 
 2) Set up email sending engine (this is an automated task that gets all the active subscriptions and sends an entry if required and runs every 15 minutes). 
 3) Configure and format the email so it uses a custom font and has some amount of design to it.
@@ -14,7 +28,7 @@ To make this site
 - Emails: configuring mailgun was easy once I got the credit card to work
 - Emails: have yet to lay out fancy emails, might try Tailwind there too
 - Emails: have to set up the cron jobs
-- The diamond: scheduled sending of emails has been about 20% of the whole project
+- The diamond: scheduled sending of emails has been about 10% of the whole project
 
 [2020-04-29 20:03:34] local.INFO: array (
   'mc_gross' => '4.90',

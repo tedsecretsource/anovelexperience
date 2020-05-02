@@ -12,9 +12,9 @@ trait Fonts
             'sans'                      => ['name' => 'Inter', 'url' => 'https://fonts.googleapis.com/css2?family=Inter:wght@200;500;800&display=swap'],
             'serif'                     => ['name' => 'Playfair Display', 'url' => 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap'],
             'mono'                      => ['name' => 'Courier', 'url' => ''],
-            'serif-one'                 => ['name' => 'Foustina', 'https://fonts.googleapis.com/css2?family=Faustina:wght@400;700&display=swap'],
-            'serif-two'                 => ['name' => 'Josefin Slab', 'https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@600;700&display=swap'],
-            'serif-three'               => ['name' => 'Rokkitt', 'https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;700&display=swap'],
+            'serif-one'                 => ['name' => 'Foustina', 'url' => 'https://fonts.googleapis.com/css2?family=Faustina:wght@400;700&display=swap'],
+            'serif-two'                 => ['name' => 'Josefin Slab', 'url' => 'https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@600;700&display=swap'],
+            'serif-three'               => ['name' => 'Rokkitt', 'url' => 'https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;700&display=swap'],
             'gothic-intense'            => ['name' => 'UnifrakturMaguntia', 'url' => 'https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap'],
             'gothic-mild'               => ['name' => 'Pirata One', 'url' => 'https://fonts.googleapis.com/css2?family=Pirata+One&display=swap'],
             'gothic-modern'             => ['name' => 'Astloch', 'url' => 'https://fonts.googleapis.com/css2?family=Astloch:wght@400;700&display=swap'],
@@ -41,5 +41,10 @@ trait Fonts
     public function get_font($key)
     {
         return $this->get_fonts()[$key];
+    }
+
+    public function get_font_url($key)
+    {
+        return $this->get_font($key)['url'];
     }
 }

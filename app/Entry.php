@@ -19,9 +19,10 @@ class Entry extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
     // protected $hidden = [];
-    // protected $dates = [];
+    protected $dates = [
+        'entry_date'
+    ];
 
     public function author()
     {
@@ -31,5 +32,13 @@ class Entry extends Model
     public function novel()
     {
         return $this->belongsTo(Novel::class, 'novel_id');
+    }
+
+    public function getFontAttribute($font)
+    {
+        if ('' == $font) {
+            return $this->author->font;
+        }
+        return $font;
     }
 }
