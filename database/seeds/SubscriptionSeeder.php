@@ -1,14 +1,21 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Subscription;
 
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
-
-class SubscriptionSeederTableSeeder extends Seeder
+class SubscriptionTableSeeder extends Seeder
 {
     public function run()
     {
-        // TestDummy::times(20)->create('App\Post');
+        factory(App\User::class, 30)
+            ->create()
+            ->each(
+                function ($user) {
+                    $user->subscriptions()->save(factory(Subscription::class)->make([
+                        'user_id' => $user->id,
+                        'novel_id' => App\Novel::all()->random()->id
+                    ]));
+                }
+            );
     }
 }

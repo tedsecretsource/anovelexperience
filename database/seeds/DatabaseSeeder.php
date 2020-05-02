@@ -32,8 +32,9 @@ class DatabaseSeeder extends Seeder
         $julien->assignRole('administrator');
         $this->call(SubscriptionStatusTableSeeder::class);
         $this->call(SubscriptionTypeTableSeeder::class);
-        $this->call(NovelTableSeeder::class);
         $this->call(EntryAuthorTableSeeder::class);
-        $this->call(EntryTableSeeder::class);
+        $this->call(NovelTableSeeder::class);
+        $this->call(SubscriptionTableSeeder::class);
+        // $this->call(EntryTableSeeder::class);
     }
 }

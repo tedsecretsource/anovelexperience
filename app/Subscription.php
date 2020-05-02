@@ -20,7 +20,8 @@ class Subscription extends Model
         'payment_amount',
         'payment_status',
         'first_entry_date',
-        'pace'
+        'pace',
+        'hash'
     ];
 
     public function subscriber()

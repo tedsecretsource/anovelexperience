@@ -9,9 +9,10 @@ class EntryAuthorTableSeeder extends Seeder
 {
     public function run()
     {
-        $author = App\EntryAuthor::create([
-            'name'     => 'Susan',
-            'font'    => 'serif-one',
-        ]);
+        factory(App\EntryAuthor::class, 28)->create();
+        // $author = App\EntryAuthor::create([
+        //     'name'     => 'Susan',
+        //     'font'    => 'serif-one',
+        // ]);
     }
 }
