@@ -58,9 +58,22 @@ class Subscription extends Model
         return $value;
     }
 
+    /**
+     * Returns the pace-adjusted next entry delivery date
+     *
+     * @return object A Carbon date object consisting of the pace-adjusted next delivery date
+     */
     public function getNextEntryDeliveryDateAttribute()
     {
         $most_recent_entry = $this->getMostRecentEntry();
+        if (null == $most_recent_entry) {
+            // probably at the start of the subscription, use the sub date
+            $most_recent_entry = Entry::make([
+                'entry_date' => $this->first_entry_date,
+                'created_at' => $this->first_entry_date
+            ]);
+        }
+
         $next_entry = $this->getNextEntry();
         if (is_object($next_entry) and $next_entry->count() > 0) {
             // divide by the pace
@@ -85,10 +98,19 @@ class Subscription extends Model
 
     public function getNextEntry()
     {
-        $next_entry = Entry::where('novel_id', $this->novel_id)
-            ->where('entry_date', '>', $this->getMostRecentEntry()->entry_date)
-            ->orderBy('entry_date')
-            ->first();
+        $most_recent_entry = $this->getMostRecentEntry();
+        if (null == $most_recent_entry) {
+            $next_entry = $this->novel->entries()->orderBy('entry_date')->first();
+        } else {
+            $next_entry = Entry::where('novel_id', $this->novel_id)
+                ->where('entry_date', '>', $most_recent_entry->entry_date)
+                ->orderBy('entry_date')
+                ->first();
+        }
+
+        if (null == $next_entry) {
+            // we're at the end of the book
+        }
 
         return $next_entry;
     }
@@ -100,7 +122,7 @@ class Subscription extends Model
         if (is_object($log) and $log->count() > 0) {
             $most_recent_entry = Entry::find($log->entry_id);
         } else {
-            $most_recent_entry = $this->novel->entries()->orderBy('entry_date')->first();
+            $most_recent_entry = null;
         }
         return $most_recent_entry;
     }
