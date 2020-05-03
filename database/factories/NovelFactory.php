@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 $factory->define(Novel::class, function (Faker $faker) {
     $fed = new Carbon($faker->dateTime);
-    $led = $fed->addDays(rand(12, 1000));
+    $led = $fed->copy()->addDays(rand(12, 1000));
     return [
         'title' => $faker->words(rand(3, 8), true),
         'author' => $faker->firstName . ' ' . $faker->lastName,
@@ -24,13 +24,16 @@ $factory->define(Novel::class, function (Faker $faker) {
 $factory->afterCreating(Novel::class, function ($novel, Faker $faker) {
     $fed = $novel->first_entry_date;
     $led = $novel->last_entry_date;
-    $novel->entries()->saveMany(
-        factory(App\Entry::class, rand(32, 105))
-            ->create(
-                [
-                    'novel_id' => $novel->id,
-                    'entry_date' => $faker->dateTimeBetween($fed, $led)
-                ]
-            )
-    );
+    $entries = rand(32, 105);
+    for ($i = 0; $i < $entries; $i++) {
+        $novel->entries()->save(
+            factory(App\Entry::class)
+                ->make(
+                    [
+                        'novel_id' => $novel->id,
+                        'entry_date' => $faker->dateTimeBetween($fed, $led)
+                    ]
+                )
+        );
+    }
 });

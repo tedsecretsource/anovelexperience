@@ -1,15 +1,16 @@
 TODO
 - Set up email job system
 - Format default emails
-- Format Gift Subscription Email
-- Format Entry email
+- DONE Format Gift Subscription Email
+- DONE Format Entry email
 - Write tests and algorithm for sending entries
 - configure jobs on server
 
 
 - DONE compose email for gift recipients
 - DONE create email templates for journal entries
-- write code for entry delivery scheduled task
+- DONE write code for entry delivery scheduled task
+array_filter(App\Subscription::where('status', 'active')->get()->toArray(), function($item) { return (bool)$item['delivery_is_past_due']; })
 - test, test, test
 
 1) Set up subscription process and gateway. 

@@ -37,6 +37,7 @@ class StandardEntry extends Mailable
         $subject = $this->entry->title == '' ? '' : ': ' . $this->entry->title;
         return $this->markdown('emails.standard-entry')
             ->subject($this->entry->novel->novel_emoji . ' ' . $this->entry->novel->title . $subject)
+            ->from(['address' => config('anovelexperience.no_reply_address'), 'name' => $this->entry->author->name])
             ->with([
                 'theme' => $this->theme,
                 'font_url' => $this->get_font_url($this->theme)

@@ -34,7 +34,7 @@ class EntryCrudController extends CrudController
         // $this->crud->setFromDb();
         $this->crud->addColumn(['name' => 'novel_id', 'type' => 'select', 'label' => 'Novel', 'entity' => 'novel', 'attribute' => 'title', 'model' => 'App\Novel']);
         $this->crud->addColumn(['name' => 'author', 'type' => 'relationship', 'entity' => 'author', 'attribute' => 'name']);
-        $this->crud->addColumn(['name' => 'order', 'type' => 'number']);
+        $this->crud->addColumn(['name' => 'title', 'type' => 'text']);
         $this->crud->addColumn(['name' => 'entry_date', 'type' => 'datetime']);
     }
 

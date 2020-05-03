@@ -8,7 +8,7 @@ class NovelTableSeeder extends Seeder
 {
     public function run()
     {
-        factory(App\Novel::class, 8)->create();
+        factory(App\Novel::class, 6)->create();
         // $dracula = App\Novel::create([
         //     'title'     => 'Sample Novel',
         //     'amount'    => 490,

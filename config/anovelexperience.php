@@ -5,5 +5,6 @@ return [
     'paypal_token_lifetime' => 0,
     'paypal_token_refreshed' => '1970-01-01 00:00:00',
     'paypal_token' => '',
-    'gift_subscription_pending_days' => 60
+    'gift_subscription_pending_days' => 60,
+    'no_reply_address' => 'no-reply@anovelexperience.email'
 ];
