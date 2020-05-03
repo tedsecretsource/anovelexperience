@@ -1,5 +1,9 @@
 @extends('layouts.dracula')
 
+@section('page_title')
+Immerse Yourself in Books
+@endsection
+
 @section('content')
     @include('default-banner')
 

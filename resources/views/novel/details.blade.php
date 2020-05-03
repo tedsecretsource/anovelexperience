@@ -13,7 +13,11 @@
             <p><b>First Entry:</b> {{ $novel->first_entry_date->toFormattedDateString() }}</p>
             <p><b>Last Entry:</b> {{ $novel->last_entry_date->toFormattedDateString() }}</p>
             <p><b>Duration:</b> about {{ $novel->duration(1, 'human') }}</p>
-            <p><a class="btn" href="{{ route('novel.subscribe', ['id' => $novel->id]) }}">Subscribe Now</a></p>
+            @if ( auth()->user()->isSubscribed($novel->id) )
+                <p><a class="btn" href="{{ route('novel.settings', ['id' => $novel->id]) }}">Subscription Settings</a></p>
+            @else
+                <p><a class="btn" href="{{ route('novel.subscribe', ['id' => $novel->id]) }}">Subscribe Now</a></p>
+            @endif
             <p>{{ $novel->summary }}</p>
         @else
             <p>We don't have any novels in our collection with that ID.</p>
