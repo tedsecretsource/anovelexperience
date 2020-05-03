@@ -63,9 +63,10 @@ class SendEntries implements ShouldQueue
             Mail::to($user->email)->send($email);
             \App\SentLog::create(
                 [
-                    'subscription_id' => $entryObj->id,
+                    'subscription_id' => $subObj->id,
                     'novel_id' => $entryObj->novel_id,
-                    'user_id' => $subObj->id
+                    'user_id' => $user->id,
+                    'entry_id' => $entryObj->id
                 ]
             );
         }
