@@ -65,7 +65,7 @@ class SendEntries implements ShouldQueue
                 [
                     'subscription_id' => $entryObj->id,
                     'novel_id' => $entryObj->novel_id,
-                    'user_id' => $sub['user_id']
+                    'user_id' => $subObj->id
                 ]
             );
         }
