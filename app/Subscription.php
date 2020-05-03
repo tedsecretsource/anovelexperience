@@ -60,18 +60,8 @@ class Subscription extends Model
 
     public function getNextEntryDeliveryDateAttribute()
     {
-        $log = $this->logs()->orderBy('id', 'desc')->take(1)->first();
-        // get the most recent and next entry dates
-        if (is_object($log) and $log->count() > 0) {
-            $most_recent_entry = Entry::find($log->entry_id);
-        } else {
-            $most_recent_entry = $this->novel->entries->first();
-        }
-
-        $next_entry = Entry::where('novel_id', $this->novel_id)
-            ->where('entry_date', '>', $most_recent_entry->entry_date)
-            ->orderBy('entry_date')
-            ->first();
+        $most_recent_entry = $this->getMostRecentEntry();
+        $next_entry = $this->getNextEntry();
         if (is_object($next_entry) and $next_entry->count() > 0) {
             // divide by the pace
             $paced_seconds = $most_recent_entry->entry_date->diffInSeconds($next_entry->entry_date) / $this->pace;
@@ -91,5 +81,27 @@ class Subscription extends Model
             return true;
         }
         return false;
+    }
+
+    public function getNextEntry()
+    {
+        $next_entry = Entry::where('novel_id', $this->novel_id)
+            ->where('entry_date', '>', $this->getMostRecentEntry()->entry_date)
+            ->orderBy('entry_date')
+            ->first();
+
+        return $next_entry;
+    }
+
+    public function getMostRecentEntry()
+    {
+        $log = $this->logs()->orderBy('id', 'desc')->take(1)->first();
+        // get the most recent and next entry dates
+        if (is_object($log) and $log->count() > 0) {
+            $most_recent_entry = Entry::find($log->entry_id);
+        } else {
+            $most_recent_entry = $this->novel->entries->first();
+        }
+        return $most_recent_entry;
     }
 }

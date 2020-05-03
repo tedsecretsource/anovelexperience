@@ -57,7 +57,8 @@ class SendEntries implements ShouldQueue
 
         foreach ($subscriptions_to_fill as $sub) {
             $user = User::find($sub['user_id']);
-            $entryObj = Entry::find($sub['id']);
+            $subObj = Subscription::find($sub['id']);
+            $entryObj = $subObj->getNextEntry();
             $email = new \App\Mail\StandardEntry($user, $entryObj);
             Mail::to($user->email)->send($email);
             \App\SentLog::create(
