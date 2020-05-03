@@ -58,11 +58,6 @@ class EntryCrudController extends CrudController
             'label' => 'Entry Title'
         ]);
         $this->crud->addField([
-            'name' => 'order',
-            'type' => 'number',
-            'label' => 'Order'
-        ]);
-        $this->crud->addField([
             'name' => 'entry_date',
             'type' => 'datetime',
             'label' => 'Date of Entry'

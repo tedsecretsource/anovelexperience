@@ -12,7 +12,14 @@ class Entry extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'novel_id', 'entry_author_id', 'order', 'entry_date', 'entry', 'editors_note', 'font',
+        'novel_id',
+        'entry_author_id',
+        'order',
+        'entry_date',
+        'entry',
+        'editors_note',
+        'font',
+        'title'
     ];
 
     protected $table = 'entries';
