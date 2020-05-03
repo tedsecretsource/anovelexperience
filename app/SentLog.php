@@ -9,6 +9,12 @@ class SentLog extends Model
 {
     use CrudTrait;
 
+    protected $fillable = [
+        'subscription_id',
+        'entry_id',
+        'user_id'
+    ];
+
     public function subscription()
     {
         return $this->belongsTo(App\Subscription::class);
