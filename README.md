@@ -13,6 +13,8 @@ TODO
 array_filter(App\Subscription::where('status', 'active')->get()->toArray(), function($item) { return (bool)$item['delivery_is_past_due']; })
 - test, test, test
 
+svn export https://github.com/anovelexperience/anovelexperience/trunk anovelexperience --force
+
 1) Set up subscription process and gateway. 
 2) Set up email sending engine (this is an automated task that gets all the active subscriptions and sends an entry if required and runs every 15 minutes). 
 3) Configure and format the email so it uses a custom font and has some amount of design to it.
