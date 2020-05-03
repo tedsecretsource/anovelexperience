@@ -100,7 +100,7 @@ class Subscription extends Model
         if (is_object($log) and $log->count() > 0) {
             $most_recent_entry = Entry::find($log->entry_id);
         } else {
-            $most_recent_entry = $this->novel->entries->first();
+            $most_recent_entry = $this->novel->entries()->orderBy('entry_date')->first();
         }
         return $most_recent_entry;
     }
