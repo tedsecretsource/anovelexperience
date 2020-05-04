@@ -29,7 +29,39 @@ class SubscriptionCrudController extends CrudController
     protected function setupListOperation()
     {
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
+        $this->crud->addColumn(
+            [
+                'name' => 'subscriber',
+                'label' => 'Subscriber',
+                'type' => 'relationship',
+                'entity' => 'subscriber',
+                'attribute' => 'name',
+            ]
+        );
+        $this->crud->addColumn(
+            [
+                'name' => 'novel',
+                'label' => 'Novel',
+                'type' => 'relationship',
+                'entity' => 'novel',
+                'attribute' => 'title',
+            ]
+        );
+        $this->crud->addColumn(
+            [
+                'name' => 'type',
+                'label' => 'Type',
+                'type' => 'text',
+            ]
+        );
+        $this->crud->addColumn(
+            [
+                'name' => 'status',
+                'label' => 'Status',
+                'type' => 'text',
+            ]
+        );
     }
 
     protected function setupCreateOperation()
@@ -64,21 +96,19 @@ class SubscriptionCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-            'name' => 'type_id',
+            'name' => 'type',
             'label' => 'Subscription Type',
-            'type' => 'relationship',
-            'entity' => 'type',
-            'attribute' => 'type',
-            'model' => 'App\SubscriptionType'
+            'type' => 'select_from_array',
+            'options' => \App\SubscriptionType::get()->pluck('type', 'type')->toArray(),
+            'allows_null' => false,
         ]);
 
         $this->crud->addField([
-            'name' => 'status_id',
+            'name' => 'status',
             'label' => 'Subscription Status',
-            'type' => 'relationship',
-            'entity' => 'status',
-            'attribute' => 'status',
-            'model' => 'App\SubscriptionStatus'
+            'type' => 'select_from_array',
+            'options' => \App\SubscriptionStatus::get()->pluck('status', 'status')->toArray(),
+            'allows_null' => false,
         ]);
 
         $this->crud->addField([
@@ -92,6 +122,18 @@ class SubscriptionCrudController extends CrudController
             'label' => 'Date Paid',
             'type' => 'datetime',
             'default' => now()
+        ]);
+
+        $this->crud->addField([
+            'name' => 'payment_amount',
+            'label' => 'Amount',
+            'type' => 'text'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'payment_status',
+            'label' => 'Payment Status',
+            'type' => 'text'
         ]);
 
         $this->crud->addField([
@@ -113,5 +155,13 @@ class SubscriptionCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    public function typesAsArray()
+    {
+        foreach (\App\SubscriptionType::all(['type'])->sortBy('type')->toArray() as $key => $value) {
+            $options[] = $value['type'];
+        }
+        return $options;
     }
 }

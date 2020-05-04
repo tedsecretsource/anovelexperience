@@ -23,7 +23,7 @@ class SentLogCrudController extends CrudController
     {
         $this->crud->setModel('App\SentLog');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/sentlog');
-        $this->crud->setEntityNameStrings('sentlog', 'sent_logs');
+        $this->crud->setEntityNameStrings('sent_log', 'sent_logs');
     }
 
     protected function setupListOperation()

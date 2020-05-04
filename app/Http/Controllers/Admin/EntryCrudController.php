@@ -36,6 +36,17 @@ class EntryCrudController extends CrudController
         $this->crud->addColumn(['name' => 'author', 'type' => 'relationship', 'entity' => 'author', 'attribute' => 'name']);
         $this->crud->addColumn(['name' => 'title', 'type' => 'text']);
         $this->crud->addColumn(['name' => 'entry_date', 'type' => 'datetime']);
+        $this->crud->addFilter(
+            [
+                'name' => 'novel',
+                'type' => 'dropdown',
+                'label' => 'Novel'
+            ],
+            \App\Novel::get()->pluck('title', 'id')->sortBy('title')->toArray(),
+            function ($value) {
+                $this->crud->addClause('where', 'novel_id', $value);
+            }
+        );
     }
 
     protected function setupCreateOperation()

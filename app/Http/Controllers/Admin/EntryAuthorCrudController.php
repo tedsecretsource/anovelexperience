@@ -44,6 +44,17 @@ class EntryAuthorCrudController extends CrudController
                 }
             ]
         ]);
+        // $this->crud->addFilter(
+        //     [
+        //         'name' => 'novel',
+        //         'type' => 'dropdown',
+        //         'label' => 'Novel'
+        //     ],
+        //     \App\Novel::get()->pluck('title', 'id')->sortBy('title')->toArray(),
+        //     function ($value) {
+        //         $this->crud->addClause('where', 'novel_id', $value);
+        //     }
+        // );
     }
 
     protected function setupCreateOperation()

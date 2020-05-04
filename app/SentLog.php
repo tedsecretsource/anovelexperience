@@ -18,16 +18,16 @@ class SentLog extends Model
 
     public function subscription()
     {
-        return $this->belongsTo(App\Subscription::class);
+        return $this->belongsTo(Subscription::class);
     }
 
     public function entry()
     {
-        return $this->belongsTo(App\Entry::class);
+        return $this->belongsTo(Entry::class);
     }
 
     public function user()
     {
-        return $this->belongsTo(App\User::class);
+        return $this->belongsTo(User::class);
     }
 }
