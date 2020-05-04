@@ -48,4 +48,16 @@ class Entry extends Model
         }
         return $font;
     }
+
+    public function getMyIndex()
+    {
+        $novel = Novel::find($this->novel->id);
+        $entries = $novel->entries()->orderBy('entry_date');
+        foreach ($entries->get() as $key => $entry) {
+            if ($entry->id === $this->id) {
+                return $key;
+            }
+        }
+        return null;
+    }
 }
