@@ -53,49 +53,48 @@ class Subscription extends Model
         return $this->hasMany(SentLog::class);
     }
 
-    public function getEntryDateAttribute($value)
-    {
-        return $value;
-    }
-
     /**
      * Returns the pace-adjusted next entry delivery date
      *
-     * @return object A Carbon date object consisting of the pace-adjusted next delivery date
+     * @return object A Carbon date object consisting of the pace-adjusted next delivery date or null if we're at the end of the book
      */
     public function getNextEntryDeliveryDateAttribute()
     {
-        $most_recent_entry = $this->getMostRecentEntry();
-        if (null == $most_recent_entry) {
-            // probably at the start of the subscription, use the sub date
-            $most_recent_entry = Entry::make([
-                'entry_date' => $this->first_entry_date,
-                'created_at' => $this->first_entry_date
-            ]);
+        $next_entry = $this->getNextEntry();
+        if (null == $next_entry) {
+            // I could return a ficticious date in the future but that seems wrong
+            return null;
         }
 
-        $next_entry = $this->getNextEntry();
-        if (is_object($next_entry) and $next_entry->count() > 0) {
-            // divide by the pace
-            $paced_seconds = $most_recent_entry->entry_date->diffInSeconds($next_entry->entry_date) / $this->pace;
-            // add the result to the most recent entry date
-            $next_due_date = $most_recent_entry->created_at->copy()->addSeconds(round($paced_seconds));
+        $most_recent_entry = $this->getMostRecentEntry();
+        if (null == $most_recent_entry) {
+            $most_recent_entry_date = $this->first_entry_date;
         } else {
-            // we're past the end of the novel
-            $next_due_date = $most_recent_entry->entry_date;
+            $most_recent_entry_date = $most_recent_entry->entry_date;
         }
+
+        // divide by the pace
+        $paced_seconds = $most_recent_entry_date->diffInSeconds($next_entry->entry_date) / $this->pace;
+        // add the result to the most recent entry date
+        $next_due_date = $most_recent_entry_date->copy()->addSeconds(round($paced_seconds));
+
         // return as a date
         return $next_due_date;
     }
 
     public function getDeliveryIsPastDueAttribute()
     {
-        if ($this->next_entry_delivery_date < Carbon::now()) {
-            return true;
+        if (null == $this->next_entry_delivery_date) {
+            return false;
         }
-        return false;
+        return $this->next_entry_delivery_date < Carbon::now();
     }
 
+    /**
+     * Get the next entry in the queue
+     *
+     * @return object Carbon object if an entry exists, null otherwise
+     */
     public function getNextEntry()
     {
         $most_recent_entry = $this->getMostRecentEntry();
@@ -108,13 +107,14 @@ class Subscription extends Model
                 ->first();
         }
 
-        if (null == $next_entry) {
-            // we're at the end of the book
-        }
-
         return $next_entry;
     }
 
+    /**
+     * Get the most recently sent entry, or null if none have been sent
+     *
+     * @return object Carbon date object if an entry has been sent, null otherwise
+     */
     public function getMostRecentEntry()
     {
         $log = $this->logs()->orderBy('id', 'desc')->take(1)->first();
