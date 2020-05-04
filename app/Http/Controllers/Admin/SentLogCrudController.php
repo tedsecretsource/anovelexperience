@@ -29,7 +29,31 @@ class SentLogCrudController extends CrudController
     protected function setupListOperation()
     {
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->addColumn(
+            [
+                'name' => 'subscription_id',
+                'type' => 'text',
+                'label' => 'Sub'
+            ]
+        );
+        $this->crud->addColumn(
+            [
+                'name' => 'user',
+                'type' => 'relationship',
+                'label' => 'User',
+                'entity' => 'user',
+                'attribute' => 'name'
+            ]
+        );
+        $this->crud->addColumn(
+            [
+                'name' => 'entry',
+                'type' => 'relationship',
+                'label' => 'Entry',
+                'entity' => 'entry',
+                'attribute' => 'title'
+            ]
+        );
     }
 
     protected function setupCreateOperation()
