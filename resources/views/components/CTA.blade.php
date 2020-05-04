@@ -10,5 +10,6 @@
     bg-dracred-100 text-xl md:text-3xl text-gray-100
     font-sans font-semibold
     border-4 border-transparent rounded
+    text-center
     shadow
     no-underline">{{ $btn_text }}</a>
