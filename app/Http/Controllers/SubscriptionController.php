@@ -97,7 +97,7 @@ class SubscriptionController extends Controller
             'subscribed' => now(),
             'type' => $type,
             'status' => $status,
-            'first_entry_date' => $request->first_entry_date,
+            'first_entry_date' => now(),
             'pace' => $request->pace,
             'payment_confirmation_id' => $request->payment_id,
             'payment_date' => \Carbon\Carbon::now()->toDateTimeString(),

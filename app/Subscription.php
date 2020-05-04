@@ -68,10 +68,12 @@ class Subscription extends Model
 
         $most_recent_entry = $this->getMostRecentEntry();
         if (null == $most_recent_entry) {
-            $most_recent_entry_date = $this->first_entry_date;
-        } else {
-            $most_recent_entry_date = $most_recent_entry->entry_date;
+            // if the sub->first_entry_date is in the past or equal to now,
+            // don't have a cow, just use this date because
+            return $this->created_at;
         }
+
+        $most_recent_entry_date = $most_recent_entry->entry_date;
 
         // divide by the pace
         $paced_seconds = $most_recent_entry_date->diffInSeconds($next_entry->entry_date) / $this->pace;
@@ -125,5 +127,12 @@ class Subscription extends Model
             $most_recent_entry = null;
         }
         return $most_recent_entry;
+    }
+
+    public static function subscriptionsPendingDelivery()
+    {
+        return array_filter(Subscription::where('status', 'active')->get()->toArray(), function ($item) {
+            return (bool) $item['delivery_is_past_due'];
+        });
     }
 }

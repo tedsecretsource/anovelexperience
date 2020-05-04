@@ -63,13 +63,6 @@ Subscribe to {{ $novel->title }}
                     'subscription' => App\Subscription::make(['pace' => 1])
                     ])
             </label>
-            <label for="first_entry_date" class="mb-4 text-gray-700 font-bold">Start Date
-                <p class="text-sm font-normal">When should we send the first entry? "Now" means subsequent entries will be sent the same number of days later as in the novel.</p>
-                <select name="first_entry_date" id="first_entry_date" class="block mt-2">
-                    <option value="{{ now() }}">Now</option>
-                    <option value="{{ $novel->first_entry_date }}">{{ $novel->first_entry_date->format('M j') }} (date of first entry in the novel)</option>
-                </select>
-            </label>
             <input type="hidden" name="amount" id="amount" value="{{ number_format(($novel->amount / 100), 2) }}">
             <button id="trial-submit-button" class="w-full sm:w-1/2 mb-32 self-center hidden w3-btn w3-blue">Subscribe to this Novel</button></p>
             <div id="paypal-button-container" class="w-2/3 self-center"></div>
@@ -117,7 +110,6 @@ Subscribe to {{ $novel->title }}
                         // disable the form so people don't click twice and show a spinner
                         let spinner = document.getElementById('spinner');
                         spinner.classList.remove('hidden');
-                        let fed = document.querySelector('#first_entry_date').options[document.querySelector('#first_entry_date').selectedIndex].value;
                         let pace = document.querySelector('#pace').options[document.querySelector('#pace').selectedIndex].value;
                         let gift = document.querySelector('#gift');
                         let full = document.querySelector('#full');
@@ -127,7 +119,6 @@ Subscribe to {{ $novel->title }}
                             "purchase_units": [{
                                 "description": 'Subscription to {{ $novel->title }} by email',
                                 "reference_id": '{{ $novel->id }}',
-                                "custom": `{ "user_id": {{auth()->user()->id}}, "type": type, "pace": pace, "fed": fed, "gift_email": gift_email }`,
                                 "amount": {
                                     "value": '{{ $novel->amountAsCurrency() }}'
                                 },
