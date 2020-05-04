@@ -11,7 +11,8 @@ class Subscription extends Model
     use CrudTrait;
 
     protected $appends = [
-        'delivery_is_past_due'
+        'delivery_is_past_due',
+        'next_entry_delivery_date'
     ];
 
     protected $fillable = [
@@ -89,7 +90,12 @@ class Subscription extends Model
         if (null == $this->next_entry_delivery_date) {
             return false;
         }
-        return $this->next_entry_delivery_date < Carbon::now();
+        // we need to conform the year part of the date or these calculations will be completely wrong
+        $now = now();
+        $next_entry_year = $this->next_entry_delivery_date->year;
+        $diffinyears = $now->year - $next_entry_year;
+        $normalized_next_entry_date = $this->next_entry_delivery_date->copy()->addYears($diffinyears);
+        return $normalized_next_entry_date < $now;
     }
 
     /**
