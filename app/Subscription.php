@@ -30,7 +30,7 @@ class Subscription extends Model
     ];
 
     protected $dates = [
-        'entry_date'
+        'first_entry_date'
     ];
 
     public function subscriber()
