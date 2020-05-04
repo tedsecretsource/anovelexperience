@@ -12,7 +12,8 @@ class SentLog extends Model
     protected $fillable = [
         'subscription_id',
         'entry_id',
-        'user_id'
+        'user_id',
+        'novel_id'
     ];
 
     public function subscription()
