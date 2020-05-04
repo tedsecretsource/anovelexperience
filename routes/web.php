@@ -53,8 +53,8 @@ Route::middleware(['auth'])->group(function () {
         return new App\Mail\GiftSubscriptionInvite($to_user, $giver_user, $novel);
     });
     Route::get('novel-entry', function () {
-        $user = App\User::find(5);
-        $entry = App\Entry::find(1);
+        $user = App\User::all()->random();
+        $entry = App\Entry::all()->random();
 
         return new App\Mail\StandardEntry($user, $entry);
     });

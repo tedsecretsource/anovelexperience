@@ -7,4 +7,13 @@
 
 {!! $entry->entry !!}
 
+@slot('subcopy')
+@component('mail::button', [
+    'url' => route('novel.settings', [$entry->novel]),
+    'color' => 'red'
+])
+Subscription Settings
+@endcomponent
+@endslot
+
 @endcomponent
