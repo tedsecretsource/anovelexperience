@@ -8,7 +8,9 @@
 {!! $entry->entry !!}
 
 @slot('subcopy')
-{!! $entry->editors_note !!}
+
+<div align="center" style="font-size: 16px">{!! $entry->editors_note !!}</div>
+
 @component('mail::button', [
     'url' => route('novel.settings', [$entry->novel]),
     'color' => 'red'
