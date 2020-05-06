@@ -1042,6 +1042,13 @@ ul {
   list-style-position: outside;
 }
 
+ol {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+
 /**
  * This injects any component classes registered by plugins.
  *

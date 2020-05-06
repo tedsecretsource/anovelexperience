@@ -21,6 +21,15 @@
                 @endif
             @endauth
             <p>{{ $novel->summary }}</p>
+            <h2>Emails You Will Receive</h2>
+            <p>This is a list of entries in the book, by date, that you will receive by email.</p>
+            @forelse ($novel->entries()->orderBy('entry_date')->get() as $entry)
+                <p>
+                    {{ $entry->entry_date->format('M d, Y') }} - {{ $entry->title }}
+                </p>
+            @empty
+                <p>No entries have been added to this novel yet</p>
+            @endforelse
         @else
             <p>We don't have any novels in our collection with that ID.</p>
         @endif

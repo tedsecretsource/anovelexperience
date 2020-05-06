@@ -134,6 +134,10 @@ ul {
     @apply px-6 list-disc list-outside;
 }
 
+ol {
+    @apply px-6 list-decimal list-outside;
+}
+
 /**
  * This injects any component classes registered by plugins.
  *
