@@ -18,7 +18,7 @@
 Subscription Settings
 @endcomponent
 
-<div align="center" style="font-size: 16px">This is entry {{ $entry->getMyIndex() + 1 }} of {{ $entry->novel->loadCount('entries')->entries_count }}</div>
+<div align="center" style="font-size: 16px">This is entry {{ $entry->getMyIndex() + 1 }} of about 135 (we're still adding entries!)<!-- {{ $entry->novel->loadCount('entries')->entries_count }} --></div>
 
 {{ $banner ?? '' }}
 
