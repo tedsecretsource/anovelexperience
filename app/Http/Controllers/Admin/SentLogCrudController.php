@@ -28,7 +28,13 @@ class SentLogCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
+        $this->crud->addColumn(
+            [
+                'name' => 'created_at',
+                'type' => 'date',
+                'label' => 'Sent On'
+            ]
+        );
         $this->crud->addColumn(
             [
                 'name' => 'subscription_id',

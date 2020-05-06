@@ -30,8 +30,9 @@ class EntryCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        // $this->crud->setFromDb();
+        if (!$this->crud->has('order')) {
+            $this->crud->orderBy('entry_date', 'desc');
+        }
         $this->crud->addColumn(['name' => 'novel_id', 'type' => 'select', 'label' => 'Novel', 'entity' => 'novel', 'attribute' => 'title', 'model' => 'App\Novel']);
         $this->crud->addColumn(['name' => 'author', 'type' => 'relationship', 'entity' => 'author', 'attribute' => 'name']);
         $this->crud->addColumn(['name' => 'title', 'type' => 'text']);
@@ -53,8 +54,6 @@ class EntryCrudController extends CrudController
     {
         $this->crud->setValidation(EntryRequest::class);
 
-        // TODO: remove setFromDb() and manually define Fields
-        // $this->crud->setFromDb();
         $this->crud->addField([
             'name' => 'novel_id',
             'label' => 'Novel',
