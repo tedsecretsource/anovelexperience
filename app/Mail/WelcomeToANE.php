@@ -30,6 +30,9 @@ class WelcomeToANE extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.welcome-to-ane');
+        return $this
+            ->subject('Welcome to ' . config('APP_NAME'))
+            ->from('hello@anovelexperience.email')
+            ->markdown('emails.welcome-to-ane');
     }
 }
