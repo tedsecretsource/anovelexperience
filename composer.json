@@ -19,6 +19,7 @@
         "laravel/ui": "^2.0",
         "paypal/rest-api-sdk-php": "^1.14",
         "spatie/laravel-activitylog": "^3.14",
+        "spatie/laravel-cookie-consent": "^2.12",
         "spatie/laravel-permission": "^3.11"
     },
     "require-dev": {

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152937115-1"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    @if ('production' == env('APP_ENV'))
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152937115-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    gtag('config', 'UA-152937115-1');
-    </script>
+        gtag('config', 'UA-152937115-1');
+        </script>
+    @endif
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -112,7 +114,9 @@
             @yield('content')
         </main>
     </div>
-
+    <div class="flex flex-col items-center">
+        @include('cookieConsent::index')
+    </div>
     <div class="bg-dracgrey x-screen text-white h-12 mt-12 mx-auto flex flex-col items-center">
         <nav class="py-4 px-6 flex flex-row flex-wrap font-sans w-full text-center">
             <a class="text-white w-1/3" href="{{ route('credits') }}">Site Credits</a>
