@@ -23,6 +23,7 @@
             <p><b>Duration:</b> about {{ $novel->duration(1, 'human') }}</p>
             <h2>Emails You Will Receive</h2>
             <p>This is a list of entries in the book, by date, that you will receive by email.</p>
+            <p>This novel consists of {{ $novel->entries->count() }} entries.</p>
             @forelse ($novel->entries()->orderBy('entry_date')->get() as $entry)
                 <p>
                     {{ $entry->entry_date->format('M d') }} - {{ $entry->title }}
