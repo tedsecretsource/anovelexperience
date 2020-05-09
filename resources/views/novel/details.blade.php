@@ -31,7 +31,7 @@
             <p>This is a list of entries in the book, by date, that you will receive by email.</p>
             <p>This novel consists of {{ $novel->entries->count() }} entries.</p>
             @forelse ($novel->entries()->orderBy('entry_date')->get() as $entry)
-                <p>
+                <p id="entry-{{ $entry->id }}">
                     {{ $entry->entry_date->format('M d') }} - {{ $entry->title }}
                     @role('administrator')
                         <a href="{{ route('entry.preview', [$entry]) }}" target="_blank">(preview email)</a>
