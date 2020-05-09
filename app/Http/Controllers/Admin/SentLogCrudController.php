@@ -31,7 +31,7 @@ class SentLogCrudController extends CrudController
         $this->crud->addColumn(
             [
                 'name' => 'created_at',
-                'type' => 'date',
+                'type' => 'datetime',
                 'label' => 'Sent On'
             ]
         );
