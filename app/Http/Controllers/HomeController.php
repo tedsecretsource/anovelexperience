@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Entry;
+use App\Mail\StandardEntry;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    /**
+     * Show a preview of the email for the selected entry
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function previewEmail(Request $request)
+    {
+        $entry = Entry::find($request->id);
+        return new StandardEntry(auth()->user(), $entry);
     }
 }
