@@ -78,6 +78,11 @@ class EntryCrudController extends CrudController
             'label' => 'Entry Text'
         ]);
         $this->crud->addField([
+            'name' => 'editors_forward',
+            'type' => 'textarea',
+            'label' => 'Editor\'s Introduction'
+        ]);
+        $this->crud->addField([
             'name' => 'editors_note',
             'type' => 'textarea',
             'label' => 'Editor\'s Note'

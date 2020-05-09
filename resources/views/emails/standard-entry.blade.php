@@ -1,4 +1,13 @@
 @component('mail::message', ['theme' => ($theme ?? ''), 'font_url' => ($font_url ?? ''), 'novel' => $entry->novel])
+
+@if ( $entry->editors_forward )
+<div style="font-size: 16px">
+    <b>Editor's note:</b> {{ $entry->editors_forward }}
+</div>
+<hr>
+<br>
+@endif
+
 @if ( $entry->title )
 # {{ $entry->title }}
 @endif
