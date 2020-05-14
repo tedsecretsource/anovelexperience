@@ -15,6 +15,35 @@ array_filter(App\Subscription::where('status', 'active')->get()->toArray(), func
 
 svn export https://github.com/anovelexperience/anovelexperience/trunk anovelexperience --force
 
+htaccess for production
+```
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    RewriteCond %{HTTP_HOST} ^dracula\.email$ [OR]
+    RewriteCond %{HTTP_HOST} ^www\.dracula\.email$
+    RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+    RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+    RewriteRule ^(.*)$ "https\:\/\/anovelexperience\.email\/$1" [R=301,L]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+```
+
 1) Set up subscription process and gateway. 
 2) Set up email sending engine (this is an automated task that gets all the active subscriptions and sends an entry if required and runs every 15 minutes). 
 3) Configure and format the email so it uses a custom font and has some amount of design to it.
