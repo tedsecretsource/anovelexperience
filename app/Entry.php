@@ -19,7 +19,8 @@ class Entry extends Model
         'entry',
         'editors_note',
         'font',
-        'title'
+        'title',
+        'editors_forward'
     ];
 
     protected $table = 'entries';

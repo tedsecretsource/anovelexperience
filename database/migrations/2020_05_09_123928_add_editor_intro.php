@@ -14,7 +14,7 @@ class AddEditorIntro extends Migration
     public function up()
     {
         Schema::table('entries', function (Blueprint $table) {
-            $table->string('editors_forward')->nullable();
+            $table->text('editors_forward')->nullable();
         });
     }
 

@@ -2,7 +2,8 @@
 
 @if ( $entry->editors_forward )
 <div style="font-size: 16px">
-    <b>Editor's note:</b> {{ $entry->editors_forward }}
+    <b>Editor's note:</b>
+    {!! $entry->editors_forward !!}
 </div>
 <hr>
 <br>
@@ -12,7 +13,7 @@
 # {{ $entry->title }}
 @endif
 
-<h4>{{ $entry->entry_date->toFormattedDateString() }}</h4>
+<h4>{{ $entry->entry_date->format('M d') }}</h4>
 
 {!! $entry->entry !!}
 
