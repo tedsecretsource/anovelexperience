@@ -54,6 +54,15 @@ class User extends Authenticatable
             ->where('novel_id', $id)
             ->where('status', '!=', 'canceled')
             ->where('status', '!=', 'fulfilled');
+        return (bool)$sub->count();
+    }
+
+    public function activeSubscriptionsCount($id)
+    {
+        $sub = $this->subscriptions
+            ->where('novel_id', $id)
+            ->where('status', '!=', 'canceled')
+            ->where('status', '!=', 'fulfilled');
         return $sub->count();
     }
 }
