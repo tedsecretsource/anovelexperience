@@ -29,6 +29,14 @@ htaccess for production
     RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
     RewriteRule ^(.*)$ "https\:\/\/anovelexperience\.email\/$1" [R=301,L]
 
+    # Handle links to old site
+    RewriteCond ${REQUEST_URI} ^/about-us\/? [OR]
+    RewriteCond ${REQUEST_URI} ^/contact\/?
+    RewriteRule ^(.*)$ "https\:\/\/anovelexperience\.email\/about" [R=301,L]
+    
+    RewriteCond ${REQUEST_URI} ^/privacy-policy\/?
+    RewriteRule ^(.*)$ "https\:\/\/anovelexperience\.email\/privacy" [R=301,L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
