@@ -4,11 +4,13 @@ namespace App;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
 class Subscription extends Model
 {
     use CrudTrait;
+    use SoftDeletes;
 
     protected $appends = [
         'delivery_is_past_due',

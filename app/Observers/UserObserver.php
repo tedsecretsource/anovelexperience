@@ -29,14 +29,17 @@ class UserObserver
     }
 
     /**
-     * Handle the user "deleted" event.
+     * Handle the user "deleting" event.
      *
      * @param  \App\User  $user
      * @return void
      */
-    public function deleted(User $user)
+    public function deleting(User $user)
     {
-        //
+        // delete related subscriptions
+        foreach ($user->subscriptions as $sub) {
+            $sub->delete();
+        }
     }
 
     /**
