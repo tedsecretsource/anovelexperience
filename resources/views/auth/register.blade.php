@@ -67,7 +67,8 @@
                         </div>
 
                         <div class="flex flex-wrap">
-                            <button type="submit" class="inline-block align-middle text-center select-none border font-bold whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline bg-blue-500 hover:bg-blue-700">
+                            <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}"></div>
+                            <button type="submit" class="inline-block align-middle text-center select-none border font-bold whitespace-no-wrap py-2 px-4 mt-6 rounded text-base leading-normal no-underline bg-blue-500 hover:bg-blue-700">
                                 {{ __('Register') }}
                             </button>
 
@@ -84,4 +85,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js-footer')
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 @endsection
