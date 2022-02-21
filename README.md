@@ -1,3 +1,15 @@
+# A Novel Experience
+
+This is a system for sending emails at predetermined days and times. It supports formatting via Markdown but also includes support for custom fonts (for the whole email, not inside the email). The system was created as an experiment. The system was used to create a version of the novel Dracula that users would receive by email. Dracula belongs to the ["epistolary" genre](https://en.wikipedia.org/wiki/Epistolary_novel) and was a natural match for the system (was the reason we built the system).
+
+The system also has support for signing up and paying for a subscription via PayPal (I know, that's old school - we should have used Stripe).
+
+The system includes seeds but only for the base system, no novels have been included. That said, I do have a copy of most of Dracula ready to go should that be necessary. It is called dracula.sql and is in the database/seeds folder.
+
+A little more info on [the project and technical details can be found here](https://docs.google.com/document/d/1GVs7LyCUe0MQQ18LhL83CRnebK_VQsD59paySXCjT88/edit?usp=sharing).
+
+# Notes and etc.
+
 TODO
 - Set up email job system
 - Format default emails
